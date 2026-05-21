@@ -13,6 +13,90 @@
     .status-sent { color: #417505; }
     .status-returned { color: #80252A; }
     .status-failed { color: #CD2026; }
+
+    /* Flag popover */
+    .flag-popover-wrapper {
+      position: relative;
+      display: inline-block;
+      vertical-align: middle;
+      margin-right: 6px;
+    }
+    .flag-trigger-btn {
+      background: none;
+      border: none;
+      padding: 2px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      border-radius: 4px;
+      line-height: 0;
+    }
+    .flag-trigger-btn:focus-visible {
+      outline: 3px solid #2491ff;
+      outline-offset: 2px;
+    }
+    .flag-popover {
+      position: absolute;
+      top: calc(100% + 6px);
+      left: 0;
+      z-index: 200;
+      background: #fff;
+      border: 1px solid #c9c9c9;
+      border-radius: 4px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+      min-width: 300px;
+      max-width: 380px;
+    }
+    .flag-popover__header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 16px 10px;
+      border-bottom: 1px solid #e8e8e8;
+    }
+    .flag-popover__title {
+      margin: 0;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #1b1b1b;
+    }
+    .flag-popover__close {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      color: #1b1b1b;
+      line-height: 0;
+    }
+    .flag-popover__close:focus-visible {
+      outline: 3px solid #2491ff;
+      outline-offset: 2px;
+    }
+    .flag-popover__close:hover { background: #f0f0f0; }
+    .flag-popover__list {
+      list-style: none;
+      margin: 0;
+      padding: 4px 0;
+    }
+    .flag-popover__item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 10px 16px;
+      font-size: 1.4rem;
+      color: #1b1b1b;
+      line-height: 1.5;
+      border-bottom: 1px solid #f0f0f0;
+    }
+    .flag-popover__item:last-child { border-bottom: none; }
+    .flag-popover__item-icon {
+      flex-shrink: 0;
+      margin-top: 2px;
+      color: #b50909;
+    }
   </style>
 </head>
 <body>
@@ -115,9 +199,59 @@
       <div class="profile-content">
         <div class="profile-content__header">
           <h2 class="profile-content__heading">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" width="24" height="28" style="vertical-align: middle; margin-right: 2px; margin-bottom: 2px;" aria-hidden="true">
-              <path fill="#2e7d32" d="M160 96C160 78.3 145.7 64 128 64C110.3 64 96 78.3 96 96L96 544C96 561.7 110.3 576 128 576C145.7 576 160 561.7 160 544L160 422.4L222.7 403.6C264.6 391 309.8 394.9 348.9 414.5C391.6 435.9 441.4 438.5 486.1 421.7L523.2 407.8C535.7 403.1 544 391.2 544 377.8L544 130.1C544 107.1 519.8 92.1 499.2 102.4L487.4 108.3C442.5 130.8 389.6 130.8 344.6 108.3C308.2 90.1 266.3 86.5 227.4 98.2L160 118.4L160 96z"/>
-            </svg>
+            <span class="flag-popover-wrapper">
+              <button
+                type="button"
+                id="flag-trigger-btn"
+                class="flag-trigger-btn"
+                aria-haspopup="dialog"
+                aria-expanded="false"
+                aria-controls="flag-popover"
+                aria-label="3 account flags active. Activate to view details."
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" width="24" height="28" aria-hidden="true" focusable="false">
+                  <path fill="#2e7d32" d="M160 96C160 78.3 145.7 64 128 64C110.3 64 96 78.3 96 96L96 544C96 561.7 110.3 576 128 576C145.7 576 160 561.7 160 544L160 422.4L222.7 403.6C264.6 391 309.8 394.9 348.9 414.5C391.6 435.9 441.4 438.5 486.1 421.7L523.2 407.8C535.7 403.1 544 391.2 544 377.8L544 130.1C544 107.1 519.8 92.1 499.2 102.4L487.4 108.3C442.5 130.8 389.6 130.8 344.6 108.3C308.2 90.1 266.3 86.5 227.4 98.2L160 118.4L160 96z"/>
+                </svg>
+              </button>
+
+              <div
+                id="flag-popover"
+                role="dialog"
+                aria-labelledby="flag-popover-title"
+                aria-modal="false"
+                class="flag-popover"
+                hidden
+              >
+                <div class="flag-popover__header">
+                  <h3 id="flag-popover-title" class="flag-popover__title">Account Flags</h3>
+                  <button type="button" class="flag-popover__close" id="flag-popover-close" aria-label="Close account flags">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                      <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                    </svg>
+                  </button>
+                </div>
+                <ul class="flag-popover__list" role="list">
+                  <li class="flag-popover__item">
+                    <svg class="flag-popover__item-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                      <path d="M12 9v4M12 17h.01M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <span>120 days delinquent on payment</span>
+                  </li>
+                  <li class="flag-popover__item">
+                    <svg class="flag-popover__item-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                      <path d="M12 9v4M12 17h.01M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <span>Failed background check — pending review</span>
+                  </li>
+                  <li class="flag-popover__item">
+                    <svg class="flag-popover__item-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                      <path d="M12 9v4M12 17h.01M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <span>License expired without renewal submission</span>
+                  </li>
+                </ul>
+              </div>
+            </span>
             Individual Profile
           </h2>
           <button type="button" class="usa-button usa-button--secondary profile-delete-btn">Delete Account</button>
@@ -3376,6 +3510,49 @@
     resendEmailModal.addEventListener('click', function(e) {
       if (e.target === resendEmailModal) closeResendEmailModal();
     });
+
+    // Flag popover
+    (function() {
+      const triggerBtn = document.getElementById('flag-trigger-btn');
+      const popover = document.getElementById('flag-popover');
+      const closeBtn = document.getElementById('flag-popover-close');
+      let lastFocused = null;
+
+      function openPopover() {
+        popover.removeAttribute('hidden');
+        triggerBtn.setAttribute('aria-expanded', 'true');
+        lastFocused = document.activeElement;
+        closeBtn.focus();
+      }
+
+      function closePopover() {
+        popover.setAttribute('hidden', '');
+        triggerBtn.setAttribute('aria-expanded', 'false');
+        if (lastFocused) lastFocused.focus();
+      }
+
+      triggerBtn.addEventListener('click', function() {
+        triggerBtn.getAttribute('aria-expanded') === 'true' ? closePopover() : openPopover();
+      });
+
+      closeBtn.addEventListener('click', closePopover);
+
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && triggerBtn.getAttribute('aria-expanded') === 'true') {
+          closePopover();
+        }
+      });
+
+      document.addEventListener('click', function(e) {
+        if (
+          triggerBtn.getAttribute('aria-expanded') === 'true' &&
+          !popover.contains(e.target) &&
+          !triggerBtn.contains(e.target)
+        ) {
+          closePopover();
+        }
+      });
+    })();
   </script>
 
 </body>
