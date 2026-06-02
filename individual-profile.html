@@ -97,6 +97,69 @@
       margin-top: 2px;
       color: #b50909;
     }
+    .flag-add-plus {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #767676;
+      line-height: 1;
+      margin-right: 1px;
+      vertical-align: middle;
+    }
+    .flag-popover__footer {
+      padding: 8px 16px 10px;
+      border-top: 1px solid #e8e8e8;
+    }
+    .flag-popover__add-btn {
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: #005ea2;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px 0;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .flag-popover__add-btn:hover { text-decoration: underline; }
+    .flag-popover__add-btn:focus-visible {
+      outline: 3px solid #2491ff;
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+    .flag-popover__section-label {
+      margin: 0;
+      padding: 8px 16px 2px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: #71767a;
+    }
+    .flag-popover__section--divided {
+      border-top: 1px solid #e8e8e8;
+    }
+    .flag-popover__section-footer {
+      padding: 6px 16px 10px;
+    }
+    .flag-popover__item-remove {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 2px 4px;
+      border-radius: 3px;
+      color: #71767a;
+      font-size: 1.4rem;
+      line-height: 1;
+      margin-left: auto;
+      flex-shrink: 0;
+      align-self: center;
+    }
+    .flag-popover__item-remove:hover { color: #b50909; background: #fff3f3; }
+    .flag-popover__item-remove:focus-visible {
+      outline: 3px solid #2491ff;
+      outline-offset: 2px;
+    }
   </style>
 </head>
 <body>
@@ -207,10 +270,10 @@
                 aria-haspopup="dialog"
                 aria-expanded="false"
                 aria-controls="flag-popover"
-                aria-label="3 account flags active. Activate to view details."
+                aria-label="3 flags active. Activate to view details."
               >
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" width="24" height="28" aria-hidden="true" focusable="false">
-                  <path fill="#2e7d32" d="M160 96C160 78.3 145.7 64 128 64C110.3 64 96 78.3 96 96L96 544C96 561.7 110.3 576 128 576C145.7 576 160 561.7 160 544L160 422.4L222.7 403.6C264.6 391 309.8 394.9 348.9 414.5C391.6 435.9 441.4 438.5 486.1 421.7L523.2 407.8C535.7 403.1 544 391.2 544 377.8L544 130.1C544 107.1 519.8 92.1 499.2 102.4L487.4 108.3C442.5 130.8 389.6 130.8 344.6 108.3C308.2 90.1 266.3 86.5 227.4 98.2L160 118.4L160 96z"/>
+                  <path fill="#d35f00" d="M160 96C160 78.3 145.7 64 128 64C110.3 64 96 78.3 96 96L96 544C96 561.7 110.3 576 128 576C145.7 576 160 561.7 160 544L160 422.4L222.7 403.6C264.6 391 309.8 394.9 348.9 414.5C391.6 435.9 441.4 438.5 486.1 421.7L523.2 407.8C535.7 403.1 544 391.2 544 377.8L544 130.1C544 107.1 519.8 92.1 499.2 102.4L487.4 108.3C442.5 130.8 389.6 130.8 344.6 108.3C308.2 90.1 266.3 86.5 227.4 98.2L160 118.4L160 96z"/>
                 </svg>
               </button>
 
@@ -223,33 +286,45 @@
                 hidden
               >
                 <div class="flag-popover__header">
-                  <h3 id="flag-popover-title" class="flag-popover__title">Account Flags</h3>
-                  <button type="button" class="flag-popover__close" id="flag-popover-close" aria-label="Close account flags">
+                  <h3 id="flag-popover-title" class="flag-popover__title">Flags</h3>
+                  <button type="button" class="flag-popover__close" id="flag-popover-close" aria-label="Close flags">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
                       <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
                     </svg>
                   </button>
                 </div>
-                <ul class="flag-popover__list" role="list">
-                  <li class="flag-popover__item">
-                    <svg class="flag-popover__item-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
-                      <path d="M12 9v4M12 17h.01M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                    <span>120 days delinquent on payment</span>
-                  </li>
-                  <li class="flag-popover__item">
-                    <svg class="flag-popover__item-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
-                      <path d="M12 9v4M12 17h.01M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                    <span>Failed background check — pending review</span>
-                  </li>
-                  <li class="flag-popover__item">
-                    <svg class="flag-popover__item-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
-                      <path d="M12 9v4M12 17h.01M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                    <span>License expired without renewal submission</span>
-                  </li>
-                </ul>
+
+                <div class="flag-popover__section">
+                  <p class="flag-popover__section-label">Manual</p>
+                  <ul class="flag-popover__list" id="manual-flags-list" role="list"></ul>
+                  <div class="flag-popover__section-footer">
+                    <button type="button" class="flag-popover__add-btn" id="manual-flag-add-btn">+ Add Flag</button>
+                  </div>
+                </div>
+
+                <div class="flag-popover__section flag-popover__section--divided">
+                  <p class="flag-popover__section-label">Account</p>
+                  <ul class="flag-popover__list" role="list">
+                    <li class="flag-popover__item">
+                      <svg class="flag-popover__item-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                        <path d="M12 9v4M12 17h.01M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                      <span>120 days delinquent on payment</span>
+                    </li>
+                    <li class="flag-popover__item">
+                      <svg class="flag-popover__item-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                        <path d="M12 9v4M12 17h.01M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                      <span>Failed background check — pending review</span>
+                    </li>
+                    <li class="flag-popover__item">
+                      <svg class="flag-popover__item-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                        <path d="M12 9v4M12 17h.01M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                      <span>License expired without renewal submission</span>
+                    </li>
+                  </ul>
+                </div>
               </div>
             </span>
             Individual Profile
@@ -1659,6 +1734,33 @@
           <button type="button" class="usa-button" id="confirm-delete-btn">Delete</button>
           <button type="button" class="usa-button usa-button--secondary" id="cancel-delete-btn">Cancel</button>
         </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add Manual Flag Modal -->
+  <div id="add-manual-flag-modal" class="modal-overlay" hidden>
+    <div class="modal-content" style="max-width: 480px;">
+      <div class="modal-header">
+        <h2 class="modal-title">Add Manual Flag</h2>
+        <button type="button" class="modal-close" id="close-add-manual-flag-modal" aria-label="Close modal">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="add-manual-flag-form">
+          <div class="usa-form-group margin-bottom-4" id="flag-name-group">
+            <label class="usa-label" for="manual-flag-name">Flag Name <span class="field-required">Required</span></label>
+            <span class="usa-error-message" id="flag-name-error" hidden>Please enter a flag name.</span>
+            <input class="usa-input" id="manual-flag-name" name="manual-flag-name" type="text" aria-describedby="flag-name-error">
+          </div>
+          <div class="modal-footer" style="padding-left: 0;">
+            <button type="submit" class="usa-button">Save</button>
+            <button type="button" class="usa-button usa-button--secondary" id="cancel-add-manual-flag">Cancel</button>
+          </div>
+        </form>
       </div>
     </div>
   </div>
@@ -3511,18 +3613,73 @@
       if (e.target === resendEmailModal) closeResendEmailModal();
     });
 
-    // Flag popover
+    // Combined flag popover
     (function() {
+      const ACCOUNT_FLAG_COUNT = 3;
+      const manualFlags = JSON.parse(localStorage.getItem('manualFlags') || '[]');
+
+      function saveFlags() {
+        localStorage.setItem('manualFlags', JSON.stringify(manualFlags));
+      }
+
       const triggerBtn = document.getElementById('flag-trigger-btn');
       const popover = document.getElementById('flag-popover');
-      const closeBtn = document.getElementById('flag-popover-close');
+      const closePopoverBtn = document.getElementById('flag-popover-close');
+      const addBtnInPopover = document.getElementById('manual-flag-add-btn');
+      const flagsList = document.getElementById('manual-flags-list');
+
+      const addFlagModal = document.getElementById('add-manual-flag-modal');
+      const addFlagForm = document.getElementById('add-manual-flag-form');
+      const flagNameInput = document.getElementById('manual-flag-name');
+      const flagNameGroup = document.getElementById('flag-name-group');
+      const flagNameError = document.getElementById('flag-name-error');
+      const closeModalBtn = document.getElementById('close-add-manual-flag-modal');
+      const cancelModalBtn = document.getElementById('cancel-add-manual-flag');
+
       let lastFocused = null;
 
+      updateAriaLabel();
+
+      function updateAriaLabel() {
+        const total = ACCOUNT_FLAG_COUNT + manualFlags.length;
+        triggerBtn.setAttribute('aria-label',
+          total + ' flag' + (total !== 1 ? 's' : '') + ' active. Activate to view details.');
+      }
+
+      function escapeHtml(str) {
+        const div = document.createElement('div');
+        div.textContent = str;
+        return div.innerHTML;
+      }
+
+      function renderManualFlags() {
+        flagsList.innerHTML = '';
+        manualFlags.forEach(function(flag, index) {
+          const li = document.createElement('li');
+          li.className = 'flag-popover__item';
+          li.innerHTML =
+            '<svg class="flag-popover__item-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">' +
+              '<path d="M12 9v4M12 17h.01M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>' +
+            '</svg>' +
+            '<span>' + escapeHtml(flag) + '</span>' +
+            '<button type="button" class="flag-popover__item-remove" aria-label="Remove flag: ' + escapeHtml(flag) + '">&#10005;</button>';
+          li.querySelector('.flag-popover__item-remove').addEventListener('click', function() {
+            manualFlags.splice(index, 1);
+            saveFlags();
+            updateAriaLabel();
+            renderManualFlags();
+            showSuccessAlert('Flag "' + flag + '" has been removed.');
+          });
+          flagsList.appendChild(li);
+        });
+      }
+
       function openPopover() {
+        renderManualFlags();
         popover.removeAttribute('hidden');
         triggerBtn.setAttribute('aria-expanded', 'true');
         lastFocused = document.activeElement;
-        closeBtn.focus();
+        closePopoverBtn.focus();
       }
 
       function closePopover() {
@@ -3531,11 +3688,58 @@
         if (lastFocused) lastFocused.focus();
       }
 
+      function clearModalErrors() {
+        flagNameGroup.classList.remove('usa-form-group--error');
+        flagNameInput.classList.remove('usa-input--error');
+        flagNameError.setAttribute('hidden', '');
+      }
+
+      function openAddFlagModal() {
+        closePopover();
+        addFlagForm.reset();
+        clearModalErrors();
+        addFlagModal.removeAttribute('hidden');
+        document.body.style.overflow = 'hidden';
+        setTimeout(function() { flagNameInput.focus(); }, 50);
+      }
+
+      function closeAddFlagModal() {
+        addFlagModal.setAttribute('hidden', '');
+        document.body.style.overflow = '';
+        addFlagForm.reset();
+        clearModalErrors();
+      }
+
       triggerBtn.addEventListener('click', function() {
         triggerBtn.getAttribute('aria-expanded') === 'true' ? closePopover() : openPopover();
       });
 
-      closeBtn.addEventListener('click', closePopover);
+      closePopoverBtn.addEventListener('click', closePopover);
+      addBtnInPopover.addEventListener('click', openAddFlagModal);
+      closeModalBtn.addEventListener('click', closeAddFlagModal);
+      cancelModalBtn.addEventListener('click', closeAddFlagModal);
+
+      addFlagModal.addEventListener('click', function(e) {
+        if (e.target === addFlagModal) closeAddFlagModal();
+      });
+
+      addFlagForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const name = flagNameInput.value.trim();
+        if (!name) {
+          flagNameGroup.classList.add('usa-form-group--error');
+          flagNameInput.classList.add('usa-input--error');
+          flagNameError.removeAttribute('hidden');
+          flagNameInput.focus();
+          return;
+        }
+        manualFlags.push(name);
+        saveFlags();
+        updateAriaLabel();
+        closeAddFlagModal();
+        openPopover();
+        showSuccessAlert('Flag "' + name + '" has been added.');
+      });
 
       document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape' && triggerBtn.getAttribute('aria-expanded') === 'true') {
@@ -3547,7 +3751,8 @@
         if (
           triggerBtn.getAttribute('aria-expanded') === 'true' &&
           !popover.contains(e.target) &&
-          !triggerBtn.contains(e.target)
+          !triggerBtn.contains(e.target) &&
+          !addFlagModal.contains(e.target)
         ) {
           closePopover();
         }
