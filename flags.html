@@ -167,7 +167,7 @@
                 <a href="#" class="icon-button" aria-label="View Flag">
                   <img src="assets/eye-icon.png" alt="" width="30" height="30">
                 </a>
-                <a href="edit-flag.html" class="icon-button" aria-label="Edit Flag">
+                <a href="edit-flag.html" class="icon-button edit-flag-btn" aria-label="Edit Flag">
                   <img src="assets/edit-icon.png" alt="" width="30" height="30">
                 </a>
                 <a href="#" class="icon-button delete-flag-btn" aria-label="Delete Flag">
@@ -183,7 +183,7 @@
                 <a href="#" class="icon-button" aria-label="View Flag">
                   <img src="assets/eye-icon.png" alt="" width="30" height="30">
                 </a>
-                <a href="edit-flag.html" class="icon-button" aria-label="Edit Flag">
+                <a href="edit-flag.html" class="icon-button edit-flag-btn" aria-label="Edit Flag">
                   <img src="assets/edit-icon.png" alt="" width="30" height="30">
                 </a>
                 <a href="#" class="icon-button delete-flag-btn" aria-label="Delete Flag">
@@ -199,7 +199,7 @@
                 <a href="#" class="icon-button" aria-label="View Flag">
                   <img src="assets/eye-icon.png" alt="" width="30" height="30">
                 </a>
-                <a href="edit-flag.html" class="icon-button" aria-label="Edit Flag">
+                <a href="edit-flag.html" class="icon-button edit-flag-btn" aria-label="Edit Flag">
                   <img src="assets/edit-icon.png" alt="" width="30" height="30">
                 </a>
                 <a href="#" class="icon-button delete-flag-btn" aria-label="Delete Flag">
@@ -215,7 +215,7 @@
                 <a href="#" class="icon-button" aria-label="View Flag">
                   <img src="assets/eye-icon.png" alt="" width="30" height="30">
                 </a>
-                <a href="edit-flag.html" class="icon-button" aria-label="Edit Flag">
+                <a href="edit-flag.html" class="icon-button edit-flag-btn" aria-label="Edit Flag">
                   <img src="assets/edit-icon.png" alt="" width="30" height="30">
                 </a>
                 <a href="#" class="icon-button delete-flag-btn" aria-label="Delete Flag">
@@ -231,7 +231,7 @@
                 <a href="#" class="icon-button" aria-label="View Flag">
                   <img src="assets/eye-icon.png" alt="" width="30" height="30">
                 </a>
-                <a href="edit-flag.html" class="icon-button" aria-label="Edit Flag">
+                <a href="edit-flag.html" class="icon-button edit-flag-btn" aria-label="Edit Flag">
                   <img src="assets/edit-icon.png" alt="" width="30" height="30">
                 </a>
                 <a href="#" class="icon-button delete-flag-btn" aria-label="Delete Flag">
@@ -279,6 +279,26 @@
   </div>
 
   <script>
+    // Apply any pending edit saved by edit-flag.html
+    (function() {
+      var pending = localStorage.getItem('flagUpdate');
+      if (!pending) return;
+      var update = JSON.parse(pending);
+      var rows = document.querySelectorAll('#flags-table tbody tr');
+      var row = rows[update.rowIndex];
+      if (row) {
+        var cells = row.querySelectorAll('td');
+        cells[0].textContent = update.name;
+        cells[1].textContent = update.description;
+        var statusEl = cells[2].querySelector('span');
+        if (statusEl) {
+          statusEl.textContent = update.status;
+          statusEl.className = update.status === 'Active' ? 'status-active' : 'status-inactive';
+        }
+      }
+      localStorage.removeItem('flagUpdate');
+    })();
+
     // Sync Active flags to localStorage for use on individual profile pages
     function syncFlagDefinitions() {
       var rows = document.querySelectorAll('#flags-table tbody tr');
@@ -295,6 +315,23 @@
     }
 
     syncFlagDefinitions();
+
+    // Edit button handlers — store row data before navigating
+    document.querySelectorAll('.edit-flag-btn').forEach(function(btn, index) {
+      btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        var row = this.closest('tr');
+        var cells = row.querySelectorAll('td');
+        var statusEl = cells[2].querySelector('span');
+        localStorage.setItem('editingFlag', JSON.stringify({
+          rowIndex: index,
+          name: cells[0].textContent.trim(),
+          description: cells[1].textContent.trim(),
+          status: statusEl ? statusEl.textContent.trim() : 'Active'
+        }));
+        window.location.href = 'edit-flag.html';
+      });
+    });
 
     // Accordion functionality
     document.querySelectorAll('.usa-accordion__button').forEach(button => {
