@@ -270,7 +270,7 @@
                 aria-haspopup="dialog"
                 aria-expanded="false"
                 aria-controls="flag-popover"
-                aria-label="3 flags active. Activate to view details."
+                aria-label="No flags active. Activate to add a flag."
               >
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" width="24" height="28" aria-hidden="true" focusable="false">
                   <path fill="#d35f00" d="M160 96C160 78.3 145.7 64 128 64C110.3 64 96 78.3 96 96L96 544C96 561.7 110.3 576 128 576C145.7 576 160 561.7 160 544L160 422.4L222.7 403.6C264.6 391 309.8 394.9 348.9 414.5C391.6 435.9 441.4 438.5 486.1 421.7L523.2 407.8C535.7 403.1 544 391.2 544 377.8L544 130.1C544 107.1 519.8 92.1 499.2 102.4L487.4 108.3C442.5 130.8 389.6 130.8 344.6 108.3C308.2 90.1 266.3 86.5 227.4 98.2L160 118.4L160 96z"/>
@@ -295,35 +295,10 @@
                 </div>
 
                 <div class="flag-popover__section">
-                  <p class="flag-popover__section-label">Manual</p>
                   <ul class="flag-popover__list" id="manual-flags-list" role="list"></ul>
                   <div class="flag-popover__section-footer">
                     <button type="button" class="flag-popover__add-btn" id="manual-flag-add-btn">+ Add Flag</button>
                   </div>
-                </div>
-
-                <div class="flag-popover__section flag-popover__section--divided">
-                  <p class="flag-popover__section-label">Account</p>
-                  <ul class="flag-popover__list" role="list">
-                    <li class="flag-popover__item">
-                      <svg class="flag-popover__item-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
-                        <path d="M12 9v4M12 17h.01M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                      </svg>
-                      <span>120 days delinquent on payment</span>
-                    </li>
-                    <li class="flag-popover__item">
-                      <svg class="flag-popover__item-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
-                        <path d="M12 9v4M12 17h.01M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                      </svg>
-                      <span>Failed background check — pending review</span>
-                    </li>
-                    <li class="flag-popover__item">
-                      <svg class="flag-popover__item-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
-                        <path d="M12 9v4M12 17h.01M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                      </svg>
-                      <span>License expired without renewal submission</span>
-                    </li>
-                  </ul>
                 </div>
               </div>
             </span>
@@ -1742,7 +1717,7 @@
   <div id="add-manual-flag-modal" class="modal-overlay" hidden>
     <div class="modal-content" style="max-width: 480px;">
       <div class="modal-header">
-        <h2 class="modal-title">Add Manual Flag</h2>
+        <h2 class="modal-title">Add Flag</h2>
         <button type="button" class="modal-close" id="close-add-manual-flag-modal" aria-label="Close modal">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -1752,9 +1727,11 @@
       <div class="modal-body">
         <form id="add-manual-flag-form">
           <div class="usa-form-group margin-bottom-4" id="flag-name-group">
-            <label class="usa-label" for="manual-flag-name">Flag Name <span class="field-required">Required</span></label>
-            <span class="usa-error-message" id="flag-name-error" hidden>Please enter a flag name.</span>
-            <input class="usa-input" id="manual-flag-name" name="manual-flag-name" type="text" aria-describedby="flag-name-error">
+            <label class="usa-label" for="manual-flag-select">Flag Name <span class="field-required">Required</span></label>
+            <span class="usa-error-message" id="flag-name-error" hidden>Please select a flag.</span>
+            <select class="usa-select" id="manual-flag-select" name="manual-flag-select" aria-describedby="flag-name-error">
+              <option value="">Please Select</option>
+            </select>
           </div>
           <div class="modal-footer" style="padding-left: 0;">
             <button type="submit" class="usa-button">Save</button>
@@ -3615,7 +3592,6 @@
 
     // Combined flag popover
     (function() {
-      const ACCOUNT_FLAG_COUNT = 3;
       const manualFlags = JSON.parse(localStorage.getItem('manualFlags') || '[]');
 
       function saveFlags() {
@@ -3630,20 +3606,42 @@
 
       const addFlagModal = document.getElementById('add-manual-flag-modal');
       const addFlagForm = document.getElementById('add-manual-flag-form');
-      const flagNameInput = document.getElementById('manual-flag-name');
+      const flagNameSelect = document.getElementById('manual-flag-select');
       const flagNameGroup = document.getElementById('flag-name-group');
       const flagNameError = document.getElementById('flag-name-error');
       const closeModalBtn = document.getElementById('close-add-manual-flag-modal');
       const cancelModalBtn = document.getElementById('cancel-add-manual-flag');
+
+      const DEFAULT_FLAG_DEFINITIONS = [
+        { name: 'Delinquent Payment', status: 'Active' },
+        { name: 'Background Check Failed', status: 'Active' },
+        { name: 'License Expired', status: 'Active' },
+        { name: 'Fraudulent Documentation', status: 'Active' }
+      ];
+
+      function populateFlagSelect() {
+        var stored = localStorage.getItem('flagDefinitions');
+        var definitions = stored ? JSON.parse(stored) : DEFAULT_FLAG_DEFINITIONS;
+        var active = definitions.filter(function(d) { return d.status === 'Active'; });
+        flagNameSelect.innerHTML = '<option value="">Please Select</option>';
+        active.forEach(function(def) {
+          var opt = document.createElement('option');
+          opt.value = def.name;
+          opt.textContent = def.name;
+          flagNameSelect.appendChild(opt);
+        });
+      }
 
       let lastFocused = null;
 
       updateAriaLabel();
 
       function updateAriaLabel() {
-        const total = ACCOUNT_FLAG_COUNT + manualFlags.length;
+        const count = manualFlags.length;
         triggerBtn.setAttribute('aria-label',
-          total + ' flag' + (total !== 1 ? 's' : '') + ' active. Activate to view details.');
+          count > 0
+            ? count + ' flag' + (count !== 1 ? 's' : '') + ' active. Activate to view details.'
+            : 'No flags active. Activate to add a flag.');
       }
 
       function escapeHtml(str) {
@@ -3690,17 +3688,18 @@
 
       function clearModalErrors() {
         flagNameGroup.classList.remove('usa-form-group--error');
-        flagNameInput.classList.remove('usa-input--error');
+        flagNameSelect.classList.remove('usa-input--error');
         flagNameError.setAttribute('hidden', '');
       }
 
       function openAddFlagModal() {
         closePopover();
+        populateFlagSelect();
         addFlagForm.reset();
         clearModalErrors();
         addFlagModal.removeAttribute('hidden');
         document.body.style.overflow = 'hidden';
-        setTimeout(function() { flagNameInput.focus(); }, 50);
+        setTimeout(function() { flagNameSelect.focus(); }, 50);
       }
 
       function closeAddFlagModal() {
@@ -3725,12 +3724,12 @@
 
       addFlagForm.addEventListener('submit', function(e) {
         e.preventDefault();
-        const name = flagNameInput.value.trim();
+        const name = flagNameSelect.value;
         if (!name) {
           flagNameGroup.classList.add('usa-form-group--error');
-          flagNameInput.classList.add('usa-input--error');
+          flagNameSelect.classList.add('usa-input--error');
           flagNameError.removeAttribute('hidden');
-          flagNameInput.focus();
+          flagNameSelect.focus();
           return;
         }
         manualFlags.push(name);
