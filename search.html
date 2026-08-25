@@ -135,184 +135,219 @@
       </div>
 
       <div class="margin-top-2">
-        <p>Use the Search Type options below to choose either Constituent, Invoice, License, or Submission. Then enter your search terms.</p>
+        <p>Use the Search Type tabs below to choose a search category, then enter your search terms.</p>
       </div>
 
-      <div class="margin-top-2">
-        <fieldset class="usa-fieldset">
-          <legend class="usa-label">Search Type <span class="field-required">Required</span></legend>
-          <div class="radio-group-inline">
-            <div class="usa-radio">
-              <input class="usa-radio__input" id="search-constituent" type="radio" name="search-type" value="constituent">
-              <label class="usa-radio__label" for="search-constituent">Constituent</label>
-            </div>
-            <div class="usa-radio">
-              <input class="usa-radio__input" id="search-invoice" type="radio" name="search-type" value="invoice">
-              <label class="usa-radio__label" for="search-invoice">Invoice</label>
-            </div>
-            <div class="usa-radio">
-              <input class="usa-radio__input" id="search-license" type="radio" name="search-type" value="license">
-              <label class="usa-radio__label" for="search-license">License</label>
-            </div>
-            <div class="usa-radio">
-              <input class="usa-radio__input" id="search-submission" type="radio" name="search-type" value="submission" checked>
-              <label class="usa-radio__label" for="search-submission">Submission</label>
-            </div>
-          </div>
-        </fieldset>
+      <div class="category-tabs" role="tablist" aria-label="Search types">
+        <button type="button" class="category-tab" role="tab" aria-selected="false" aria-controls="search-fields-panel" data-search-type="constituent">Constituent</button>
+        <button type="button" class="category-tab" role="tab" aria-selected="false" aria-controls="search-fields-panel" data-search-type="invoice">Invoice</button>
+        <button type="button" class="category-tab" role="tab" aria-selected="false" aria-controls="search-fields-panel" data-search-type="license">License</button>
+        <button type="button" class="category-tab active" role="tab" aria-selected="true" aria-controls="search-fields-panel" data-search-type="submission">Submission</button>
+        <button type="button" class="category-tab" role="tab" aria-selected="false" aria-controls="search-fields-panel" data-search-type="assets">Assets</button>
+        <button type="button" class="category-tab" role="tab" aria-selected="false" aria-controls="search-fields-panel" data-search-type="inspections">Inspections</button>
       </div>
 
       <div class="margin-top-2">
         <p>Please enter the search category and search terms below.</p>
       </div>
 
-      <div class="margin-top-2">
-        <label class="usa-label" for="constituent-name">Constituent Name</label>
-        <div class="usa-hint">Last Name, First Name, Business Name, or DBA Name</div>
-        <input class="usa-input" id="constituent-name" name="constituent-name" type="text">
-      </div>
+      <div id="search-fields-panel">
+        <div class="search-fields-group" data-search-group="standard">
+          <div class="margin-top-2">
+            <label class="usa-label" for="constituent-name">Constituent Name</label>
+            <div class="usa-hint">Last Name, First Name, Business Name, or DBA Name</div>
+            <input class="usa-input" id="constituent-name" name="constituent-name" type="text">
+          </div>
 
-      <div class="grid-row grid-gap-2 margin-top-2">
-        <div class="grid-col-5">
-          <label class="usa-label" for="email">Email</label>
-          <input class="usa-input" id="email" name="email" type="text">
-        </div>
-        <div class="grid-col-5">
-          <label class="usa-label" for="fein-number">FEIN Number (XX-XXXXXXX)</label>
-          <input class="usa-input" id="fein-number" name="fein-number" type="text">
-        </div>
-        <div class="grid-col-5">
-          <label class="usa-label" for="customer-number">Customer Number</label>
-          <input class="usa-input" id="customer-number" name="customer-number" type="text">
-        </div>
-        <div class="grid-col-5">
-          <!-- Empty column -->
-        </div>
-        <div class="grid-col-5">
-          <!-- Empty column -->
-        </div>
-      </div>
-
-      <div class="margin-top-2">
-        <div class="usa-accordion usa-accordion--bordered">
-          <h3 class="usa-accordion__heading">
-            <button type="button" class="usa-accordion__button" aria-expanded="true" aria-controls="advanced-search-content">
-              Additional Criteria
-            </button>
-          </h3>
-          <div id="advanced-search-content" class="usa-accordion__content usa-prose">
-            <div class="grid-row grid-gap-2 margin-top-2">
-              <div class="grid-col-5">
-                <label class="usa-label" for="license-number">License Number</label>
-                <input class="usa-input" id="license-number" name="license-number" type="text">
-              </div>
-              <div class="grid-col-5">
-                <label class="usa-label" for="license-type">License Type</label>
-                <select class="usa-select" id="license-type" name="license-type">
-                  <option value="">Please Select</option>
-                </select>
-              </div>
-              <div class="grid-col-5">
-                <!-- Empty column -->
-              </div>
-              <div class="grid-col-5">
-                <!-- Empty column -->
-              </div>
-              <div class="grid-col-5">
-                <!-- Empty column -->
-              </div>
+          <div class="grid-row grid-gap-2 margin-top-2">
+            <div class="grid-col-5">
+              <label class="usa-label" for="email">Email</label>
+              <input class="usa-input" id="email" name="email" type="text">
             </div>
+            <div class="grid-col-5">
+              <label class="usa-label" for="fein-number">FEIN Number (XX-XXXXXXX)</label>
+              <input class="usa-input" id="fein-number" name="fein-number" type="text">
+            </div>
+            <div class="grid-col-5">
+              <label class="usa-label" for="customer-number">Customer Number</label>
+              <input class="usa-input" id="customer-number" name="customer-number" type="text">
+            </div>
+            <div class="grid-col-5">
+              <!-- Empty column -->
+            </div>
+            <div class="grid-col-5">
+              <!-- Empty column -->
+            </div>
+          </div>
 
-            <div class="grid-row grid-gap-2 margin-top-2">
-              <div class="grid-col-5">
-                <label class="usa-label" for="submission-number">Submission Number</label>
-                <input class="usa-input" id="submission-number" name="submission-number" type="text">
-              </div>
-              <div class="grid-col-5">
-                <label class="usa-label" for="submission-start-date">Submission Start Date</label>
-                <div class="date-picker-wrapper">
-                  <input class="usa-input" id="submission-start-date" name="submission-start-date" type="text" placeholder="MM/DD/YYYY">
-                  <button type="button" class="date-picker-button" aria-label="Select date">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                      <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                      <line x1="16" y1="2" x2="16" y2="6"></line>
-                      <line x1="8" y1="2" x2="8" y2="6"></line>
-                      <line x1="3" y1="10" x2="21" y2="10"></line>
-                    </svg>
-                  </button>
+          <div class="margin-top-2">
+            <div class="usa-accordion usa-accordion--bordered">
+              <h3 class="usa-accordion__heading">
+                <button type="button" class="usa-accordion__button" aria-expanded="true" aria-controls="advanced-search-content">
+                  Additional Criteria
+                </button>
+              </h3>
+              <div id="advanced-search-content" class="usa-accordion__content usa-prose">
+                <div class="grid-row grid-gap-2 margin-top-2">
+                  <div class="grid-col-5">
+                    <label class="usa-label" for="license-number">License Number</label>
+                    <input class="usa-input" id="license-number" name="license-number" type="text">
+                  </div>
+                  <div class="grid-col-5">
+                    <label class="usa-label" for="license-type">License Type</label>
+                    <select class="usa-select" id="license-type" name="license-type">
+                      <option value="">Please Select</option>
+                    </select>
+                  </div>
+                  <div class="grid-col-5">
+                    <!-- Empty column -->
+                  </div>
+                  <div class="grid-col-5">
+                    <!-- Empty column -->
+                  </div>
+                  <div class="grid-col-5">
+                    <!-- Empty column -->
+                  </div>
+                </div>
+
+                <div class="grid-row grid-gap-2 margin-top-2">
+                  <div class="grid-col-5">
+                    <label class="usa-label" for="submission-number">Submission Number</label>
+                    <input class="usa-input" id="submission-number" name="submission-number" type="text">
+                  </div>
+                  <div class="grid-col-5">
+                    <label class="usa-label" for="submission-start-date">Submission Start Date</label>
+                    <div class="date-picker-wrapper">
+                      <input class="usa-input" id="submission-start-date" name="submission-start-date" type="text" placeholder="MM/DD/YYYY">
+                      <button type="button" class="date-picker-button" aria-label="Select date">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                          <line x1="16" y1="2" x2="16" y2="6"></line>
+                          <line x1="8" y1="2" x2="8" y2="6"></line>
+                          <line x1="3" y1="10" x2="21" y2="10"></line>
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="grid-col-5">
+                    <label class="usa-label" for="submission-end-date">Submission End Date</label>
+                    <div class="date-picker-wrapper">
+                      <input class="usa-input" id="submission-end-date" name="submission-end-date" type="text" placeholder="MM/DD/YYYY">
+                      <button type="button" class="date-picker-button" aria-label="Select date">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                          <line x1="16" y1="2" x2="16" y2="6"></line>
+                          <line x1="8" y1="2" x2="8" y2="6"></line>
+                          <line x1="3" y1="10" x2="21" y2="10"></line>
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="grid-col-5">
+                    <label class="usa-label" for="submission-review-status">Submission Review Status</label>
+                    <select class="usa-select" id="submission-review-status" name="submission-review-status">
+                      <option value="">Please Select</option>
+                    </select>
+                  </div>
+                  <div class="grid-col-5">
+                    <!-- Empty column -->
+                  </div>
+                </div>
+
+                <div class="grid-row grid-gap-2 margin-top-2">
+                  <div class="grid-col-5">
+                    <label class="usa-label" for="transaction-number">Transaction Number</label>
+                    <input class="usa-input" id="transaction-number" name="transaction-number" type="text">
+                  </div>
+                  <div class="grid-col-5">
+                    <label class="usa-label" for="application-type">Application Type</label>
+                    <select class="usa-select" id="application-type" name="application-type">
+                      <option value="">Please Select</option>
+                    </select>
+                  </div>
+                  <div class="grid-col-5">
+                    <label class="usa-label" for="form-number">Form Number</label>
+                    <input class="usa-input" id="form-number" name="form-number" type="text">
+                  </div>
+                  <div class="grid-col-5">
+                    <!-- Empty column -->
+                  </div>
+                  <div class="grid-col-5">
+                    <!-- Empty column -->
+                  </div>
+                </div>
+
+                <div class="grid-row grid-gap-2 margin-top-2">
+                  <div class="grid-col-5">
+                    <label class="usa-label" for="physical-address-1">Physical Address Line 1</label>
+                    <input class="usa-input" id="physical-address-1" name="physical-address-1" type="text">
+                  </div>
+                  <div class="grid-col-5">
+                    <label class="usa-label" for="physical-address-2">Physical Address Line 2</label>
+                    <input class="usa-input" id="physical-address-2" name="physical-address-2" type="text">
+                  </div>
+                  <div class="grid-col-5">
+                    <label class="usa-label" for="physical-city">Physical City</label>
+                    <input class="usa-input" id="physical-city" name="physical-city" type="text">
+                  </div>
+                  <div class="grid-col-5">
+                    <label class="usa-label" for="physical-state">Physical State</label>
+                    <select class="usa-select" id="physical-state" name="physical-state">
+                      <option value="">Please Select</option>
+                    </select>
+                  </div>
+                  <div class="grid-col-5">
+                    <label class="usa-label" for="physical-zip">Physical Zip Code</label>
+                    <input class="usa-input" id="physical-zip" name="physical-zip" type="text">
+                  </div>
                 </div>
               </div>
-              <div class="grid-col-5">
-                <label class="usa-label" for="submission-end-date">Submission End Date</label>
-                <div class="date-picker-wrapper">
-                  <input class="usa-input" id="submission-end-date" name="submission-end-date" type="text" placeholder="MM/DD/YYYY">
-                  <button type="button" class="date-picker-button" aria-label="Select date">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                      <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                      <line x1="16" y1="2" x2="16" y2="6"></line>
-                      <line x1="8" y1="2" x2="8" y2="6"></line>
-                      <line x1="3" y1="10" x2="21" y2="10"></line>
-                    </svg>
-                  </button>
-                </div>
-              </div>
-              <div class="grid-col-5">
-                <label class="usa-label" for="submission-review-status">Submission Review Status</label>
-                <select class="usa-select" id="submission-review-status" name="submission-review-status">
-                  <option value="">Please Select</option>
-                </select>
-              </div>
-              <div class="grid-col-5">
-                <!-- Empty column -->
-              </div>
             </div>
+          </div>
+        </div>
 
-            <div class="grid-row grid-gap-2 margin-top-2">
-              <div class="grid-col-5">
-                <label class="usa-label" for="transaction-number">Transaction Number</label>
-                <input class="usa-input" id="transaction-number" name="transaction-number" type="text">
-              </div>
-              <div class="grid-col-5">
-                <label class="usa-label" for="application-type">Application Type</label>
-                <select class="usa-select" id="application-type" name="application-type">
-                  <option value="">Please Select</option>
-                </select>
-              </div>
-              <div class="grid-col-5">
-                <label class="usa-label" for="form-number">Form Number</label>
-                <input class="usa-input" id="form-number" name="form-number" type="text">
-              </div>
-              <div class="grid-col-5">
-                <!-- Empty column -->
-              </div>
-              <div class="grid-col-5">
-                <!-- Empty column -->
-              </div>
+        <div class="search-fields-group" data-search-group="assets" hidden>
+          <div class="grid-row grid-gap-2 margin-top-2">
+            <div class="grid-col-5">
+              <label class="usa-label" for="assets-search-by">Search By</label>
+              <select class="usa-select" id="assets-search-by" name="assets-search-by">
+                <option value="">Please Select</option>
+                <option value="asset-type">Asset Type</option>
+                <option value="id-type">ID Type</option>
+                <option value="status">Status</option>
+              </select>
             </div>
+            <div class="grid-col-8">
+              <label class="usa-label" for="assets-search-term">Search</label>
+              <input class="usa-input" id="assets-search-term" name="assets-search-term" type="text">
+            </div>
+          </div>
+        </div>
 
-            <div class="grid-row grid-gap-2 margin-top-2">
-              <div class="grid-col-5">
-                <label class="usa-label" for="physical-address-1">Physical Address Line 1</label>
-                <input class="usa-input" id="physical-address-1" name="physical-address-1" type="text">
-              </div>
-              <div class="grid-col-5">
-                <label class="usa-label" for="physical-address-2">Physical Address Line 2</label>
-                <input class="usa-input" id="physical-address-2" name="physical-address-2" type="text">
-              </div>
-              <div class="grid-col-5">
-                <label class="usa-label" for="physical-city">Physical City</label>
-                <input class="usa-input" id="physical-city" name="physical-city" type="text">
-              </div>
-              <div class="grid-col-5">
-                <label class="usa-label" for="physical-state">Physical State</label>
-                <select class="usa-select" id="physical-state" name="physical-state">
-                  <option value="">Please Select</option>
-                </select>
-              </div>
-              <div class="grid-col-5">
-                <label class="usa-label" for="physical-zip">Physical Zip Code</label>
-                <input class="usa-input" id="physical-zip" name="physical-zip" type="text">
-              </div>
+        <div class="search-fields-group" data-search-group="inspections" hidden>
+          <div class="margin-top-2">
+            <label class="usa-label" for="inspections-search-term">Search</label>
+            <input class="usa-input" id="inspections-search-term" name="inspections-search-term" type="text">
+          </div>
+
+          <div class="grid-row grid-gap-2 margin-top-2">
+            <div class="grid-col-4">
+              <label class="usa-label" for="inspection-type">Inspection Type</label>
+              <select class="usa-select" id="inspection-type" name="inspection-type">
+                <option value="">Please Select</option>
+              </select>
+            </div>
+            <div class="grid-col-4">
+              <label class="usa-label" for="inspection-status">Inspection Status</label>
+              <select class="usa-select" id="inspection-status" name="inspection-status">
+                <option value="">Please Select</option>
+              </select>
+            </div>
+            <div class="grid-col-4">
+              <label class="usa-label" for="inspection-outcome">Inspection Outcome</label>
+              <select class="usa-select" id="inspection-outcome" name="inspection-outcome">
+                <option value="">Please Select</option>
+              </select>
             </div>
           </div>
         </div>
@@ -324,139 +359,215 @@
       </div>
 
       <div class="margin-top-2">
-        <div class="table-controls">
-          <div class="table-controls__left">
-            <strong>Showing 1 - 5 of 5 Entries</strong>
+        <div class="results-group" data-results-group="standard">
+          <div class="table-controls">
+            <div class="table-controls__left">
+              <strong>Showing 1 - 5 of 5 Entries</strong>
+            </div>
+            <div class="table-controls__right">
+              <label for="entries-per-page-search" class="table-controls__label">Show</label>
+              <select class="usa-select table-controls__select" id="entries-per-page-search" name="entries-per-page-search">
+                <option value="100" selected>100</option>
+                <option value="50">50</option>
+                <option value="25">25</option>
+                <option value="10">10</option>
+              </select>
+            </div>
           </div>
-          <div class="table-controls__right">
-            <label for="entries-per-page-search" class="table-controls__label">Show</label>
-            <select class="usa-select table-controls__select" id="entries-per-page-search" name="entries-per-page-search">
-              <option value="100" selected>100</option>
-              <option value="50">50</option>
-              <option value="25">25</option>
-              <option value="10">10</option>
-            </select>
-          </div>
+
+          <table class="usa-table usa-table--borderless usa-table--striped">
+            <thead>
+              <tr>
+                <th scope="col" role="columnheader" aria-sort="none">Submission Number <span class="sort-arrows"></span></th>
+                <th scope="col" role="columnheader" aria-sort="none">License Number <span class="sort-arrows"></span></th>
+                <th scope="col" role="columnheader" aria-sort="none">Customer Number <span class="sort-arrows"></span></th>
+                <th scope="col" role="columnheader" aria-sort="none">Constituent Name <span class="sort-arrows"></span></th>
+                <th scope="col" role="columnheader" aria-sort="none">Form Number <span class="sort-arrows"></span></th>
+                <th scope="col" role="columnheader" aria-sort="none">Submitted Date <span class="sort-arrows"></span></th>
+                <th scope="col" role="columnheader" aria-sort="none">Submission Review Status <span class="sort-arrows"></span></th>
+                <th scope="col" role="columnheader">Controls</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>723456789</td>
+                <td>01234567</td>
+                <td>012345678</td>
+                <td>Sarah Johnson</td>
+                <td>DNR-2024-A</td>
+                <td>03/15/2026</td>
+                <td><span class="status-badge status-approved">Approved</span></td>
+                <td>
+                  <a href="individual-profile.html" class="icon-button" aria-label="View Applicant Profile">
+                    <img src="assets/view-applicant-profile.png" alt="" width="30" height="30">
+                  </a>
+                </td>
+              </tr>
+              <tr>
+                <td>734567890</td>
+                <td>02345678</td>
+                <td>023456789</td>
+                <td>Michael Chen</td>
+                <td>DNR-2024-B</td>
+                <td>03/16/2026</td>
+                <td><span class="status-badge status-pending">Pending</span></td>
+                <td>
+                  <a href="individual-profile.html" class="icon-button" aria-label="View Applicant Profile">
+                    <img src="assets/view-applicant-profile.png" alt="" width="30" height="30">
+                  </a>
+                </td>
+              </tr>
+              <tr>
+                <td>745678901</td>
+                <td>03456789</td>
+                <td>034567890</td>
+                <td>Jennifer Williams</td>
+                <td>DNR-2024-C</td>
+                <td>03/17/2026</td>
+                <td><span class="status-badge status-denied">Denied</span></td>
+                <td>
+                  <a href="individual-profile.html" class="icon-button" aria-label="View Applicant Profile">
+                    <img src="assets/view-applicant-profile.png" alt="" width="30" height="30">
+                  </a>
+                </td>
+              </tr>
+              <tr>
+                <td>756789012</td>
+                <td>04567890</td>
+                <td>045678901</td>
+                <td>David Martinez</td>
+                <td>DNR-2024-D</td>
+                <td>03/18/2026</td>
+                <td><span class="status-badge status-approved">Approved</span></td>
+                <td>
+                  <a href="individual-profile.html" class="icon-button" aria-label="View Applicant Profile">
+                    <img src="assets/view-applicant-profile.png" alt="" width="30" height="30">
+                  </a>
+                </td>
+              </tr>
+              <tr>
+                <td>767890123</td>
+                <td>05678901</td>
+                <td>056789012</td>
+                <td>Emily Brown</td>
+                <td>DNR-2024-E</td>
+                <td>03/19/2026</td>
+                <td><span class="status-badge status-pending">Pending</span></td>
+                <td>
+                  <a href="individual-profile.html" class="icon-button" aria-label="View Applicant Profile">
+                    <img src="assets/view-applicant-profile.png" alt="" width="30" height="30">
+                  </a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <nav aria-label="Pagination" class="usa-pagination" style="display: flex; justify-content: center; margin-top: 2rem;">
+            <ul class="usa-pagination__list">
+              <li class="usa-pagination__item usa-pagination__arrow">
+                <a href="#" class="usa-pagination__link usa-pagination__previous-page" aria-label="Previous page">
+                  <span>‹</span>
+                  <span class="usa-pagination__link-text">Previous</span>
+                </a>
+              </li>
+              <li class="usa-pagination__item usa-pagination__page-no">
+                <a href="#" class="usa-pagination__button usa-current" aria-label="Page 1" aria-current="page">1</a>
+              </li>
+              <li class="usa-pagination__item usa-pagination__page-no">
+                <a href="#" class="usa-pagination__button" aria-label="Page 2">2</a>
+              </li>
+              <li class="usa-pagination__item usa-pagination__page-no">
+                <a href="#" class="usa-pagination__button" aria-label="Page 3">3</a>
+              </li>
+              <li class="usa-pagination__item usa-pagination__page-no">
+                <a href="#" class="usa-pagination__button" aria-label="Page 4">4</a>
+              </li>
+              <li class="usa-pagination__item usa-pagination__page-no">
+                <a href="#" class="usa-pagination__button" aria-label="Page 5">5</a>
+              </li>
+              <li class="usa-pagination__item usa-pagination__arrow">
+                <a href="#" class="usa-pagination__link usa-pagination__next-page" aria-label="Next page">
+                  <span class="usa-pagination__link-text">Next</span>
+                  <span>›</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
         </div>
 
-        <table class="usa-table usa-table--borderless usa-table--striped">
-          <thead>
-            <tr>
-              <th scope="col" role="columnheader" aria-sort="none">Submission Number <span class="sort-arrows"></span></th>
-              <th scope="col" role="columnheader" aria-sort="none">License Number <span class="sort-arrows"></span></th>
-              <th scope="col" role="columnheader" aria-sort="none">Customer Number <span class="sort-arrows"></span></th>
-              <th scope="col" role="columnheader" aria-sort="none">Constituent Name <span class="sort-arrows"></span></th>
-              <th scope="col" role="columnheader" aria-sort="none">Form Number <span class="sort-arrows"></span></th>
-              <th scope="col" role="columnheader" aria-sort="none">Submitted Date <span class="sort-arrows"></span></th>
-              <th scope="col" role="columnheader" aria-sort="none">Submission Review Status <span class="sort-arrows"></span></th>
-              <th scope="col" role="columnheader">Controls</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>723456789</td>
-              <td>01234567</td>
-              <td>012345678</td>
-              <td>Sarah Johnson</td>
-              <td>DNR-2024-A</td>
-              <td>03/15/2026</td>
-              <td><span class="status-badge status-approved">Approved</span></td>
-              <td>
-                <a href="individual-profile.html" class="icon-button" aria-label="View Applicant Profile">
-                  <img src="assets/view-applicant-profile.png" alt="" width="30" height="30">
-                </a>
-              </td>
-            </tr>
-            <tr>
-              <td>734567890</td>
-              <td>02345678</td>
-              <td>023456789</td>
-              <td>Michael Chen</td>
-              <td>DNR-2024-B</td>
-              <td>03/16/2026</td>
-              <td><span class="status-badge status-pending">Pending</span></td>
-              <td>
-                <a href="individual-profile.html" class="icon-button" aria-label="View Applicant Profile">
-                  <img src="assets/view-applicant-profile.png" alt="" width="30" height="30">
-                </a>
-              </td>
-            </tr>
-            <tr>
-              <td>745678901</td>
-              <td>03456789</td>
-              <td>034567890</td>
-              <td>Jennifer Williams</td>
-              <td>DNR-2024-C</td>
-              <td>03/17/2026</td>
-              <td><span class="status-badge status-denied">Denied</span></td>
-              <td>
-                <a href="individual-profile.html" class="icon-button" aria-label="View Applicant Profile">
-                  <img src="assets/view-applicant-profile.png" alt="" width="30" height="30">
-                </a>
-              </td>
-            </tr>
-            <tr>
-              <td>756789012</td>
-              <td>04567890</td>
-              <td>045678901</td>
-              <td>David Martinez</td>
-              <td>DNR-2024-D</td>
-              <td>03/18/2026</td>
-              <td><span class="status-badge status-approved">Approved</span></td>
-              <td>
-                <a href="individual-profile.html" class="icon-button" aria-label="View Applicant Profile">
-                  <img src="assets/view-applicant-profile.png" alt="" width="30" height="30">
-                </a>
-              </td>
-            </tr>
-            <tr>
-              <td>767890123</td>
-              <td>05678901</td>
-              <td>056789012</td>
-              <td>Emily Brown</td>
-              <td>DNR-2024-E</td>
-              <td>03/19/2026</td>
-              <td><span class="status-badge status-pending">Pending</span></td>
-              <td>
-                <a href="individual-profile.html" class="icon-button" aria-label="View Applicant Profile">
-                  <img src="assets/view-applicant-profile.png" alt="" width="30" height="30">
-                </a>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+        <div class="results-group" data-results-group="assets" hidden>
+          <div class="table-controls">
+            <div class="table-controls__left">
+              <strong>Showing 0 - 0 of 0 Entries</strong>
+            </div>
+            <div class="table-controls__right">
+              <label for="entries-per-page-assets" class="table-controls__label">Show</label>
+              <select class="usa-select table-controls__select" id="entries-per-page-assets" name="entries-per-page-assets">
+                <option value="100" selected>100</option>
+                <option value="50">50</option>
+                <option value="25">25</option>
+                <option value="10">10</option>
+              </select>
+            </div>
+          </div>
 
-        <nav aria-label="Pagination" class="usa-pagination" style="display: flex; justify-content: center; margin-top: 2rem;">
-          <ul class="usa-pagination__list">
-            <li class="usa-pagination__item usa-pagination__arrow">
-              <a href="#" class="usa-pagination__link usa-pagination__previous-page" aria-label="Previous page">
-                <span>‹</span>
-                <span class="usa-pagination__link-text">Previous</span>
-              </a>
-            </li>
-            <li class="usa-pagination__item usa-pagination__page-no">
-              <a href="#" class="usa-pagination__button usa-current" aria-label="Page 1" aria-current="page">1</a>
-            </li>
-            <li class="usa-pagination__item usa-pagination__page-no">
-              <a href="#" class="usa-pagination__button" aria-label="Page 2">2</a>
-            </li>
-            <li class="usa-pagination__item usa-pagination__page-no">
-              <a href="#" class="usa-pagination__button" aria-label="Page 3">3</a>
-            </li>
-            <li class="usa-pagination__item usa-pagination__page-no">
-              <a href="#" class="usa-pagination__button" aria-label="Page 4">4</a>
-            </li>
-            <li class="usa-pagination__item usa-pagination__page-no">
-              <a href="#" class="usa-pagination__button" aria-label="Page 5">5</a>
-            </li>
-            <li class="usa-pagination__item usa-pagination__arrow">
-              <a href="#" class="usa-pagination__link usa-pagination__next-page" aria-label="Next page">
-                <span class="usa-pagination__link-text">Next</span>
-                <span>›</span>
-              </a>
-            </li>
-          </ul>
-        </nav>
+          <table class="usa-table usa-table--borderless usa-table--striped">
+            <thead>
+              <tr>
+                <th scope="col" role="columnheader" aria-sort="none">ID Type <span class="sort-arrows"></span></th>
+                <th scope="col" role="columnheader" aria-sort="none">ID Value <span class="sort-arrows"></span></th>
+                <th scope="col" role="columnheader" aria-sort="none">Asset Type <span class="sort-arrows"></span></th>
+                <th scope="col" role="columnheader" aria-sort="none">Modified By <span class="sort-arrows"></span></th>
+                <th scope="col" role="columnheader" aria-sort="none">Modified Date <span class="sort-arrows"></span></th>
+                <th scope="col" role="columnheader" aria-sort="none">Status <span class="sort-arrows"></span></th>
+                <th scope="col" role="columnheader" aria-sort="none">Active Licenses <span class="sort-arrows"></span></th>
+                <th scope="col" role="columnheader" style="white-space: nowrap;">Controls</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td colspan="8" style="text-align: center; padding: 2rem; color: #71767a; font-style: italic;">No Asset information available.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="results-group" data-results-group="inspections" hidden>
+          <div class="table-controls">
+            <div class="table-controls__left">
+              <strong>Showing 0 - 0 of 0 Entries</strong>
+            </div>
+            <div class="table-controls__right">
+              <label for="entries-per-page-inspections" class="table-controls__label">Show</label>
+              <select class="usa-select table-controls__select" id="entries-per-page-inspections" name="entries-per-page-inspections">
+                <option value="100" selected>100</option>
+                <option value="50">50</option>
+                <option value="25">25</option>
+                <option value="10">10</option>
+              </select>
+            </div>
+          </div>
+
+          <table class="usa-table usa-table--borderless usa-table--striped">
+            <thead>
+              <tr>
+                <th scope="col" role="columnheader" aria-sort="none">ID <span class="sort-arrows"></span></th>
+                <th scope="col" role="columnheader" aria-sort="none">Type <span class="sort-arrows"></span></th>
+                <th scope="col" role="columnheader" aria-sort="none">Outcome <span class="sort-arrows"></span></th>
+                <th scope="col" role="columnheader" aria-sort="none">Due Date <span class="sort-arrows"></span></th>
+                <th scope="col" role="columnheader" aria-sort="none">Completion Date <span class="sort-arrows"></span></th>
+                <th scope="col" role="columnheader" aria-sort="none">Inspection Subject <span class="sort-arrows"></span></th>
+                <th scope="col" role="columnheader" aria-sort="none">Status <span class="sort-arrows"></span></th>
+                <th scope="col" role="columnheader" style="white-space: nowrap;">Controls</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td colspan="8" style="text-align: center; padding: 2rem; color: #71767a; font-style: italic;">No Inspection information available.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
 
     </main>
@@ -476,6 +587,36 @@
           this.setAttribute('aria-expanded', 'true');
           content.removeAttribute('hidden');
         }
+      });
+    });
+
+    // Search type tabs — the first four types share one search form/results
+    // table ("standard"); Assets and Inspections each get their own group.
+    const searchTypeToGroup = {
+      constituent: 'standard',
+      invoice: 'standard',
+      license: 'standard',
+      submission: 'standard',
+      assets: 'assets',
+      inspections: 'inspections'
+    };
+
+    document.querySelectorAll('[data-search-type]').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        document.querySelectorAll('[data-search-type]').forEach(function(b) {
+          b.classList.remove('active');
+          b.setAttribute('aria-selected', 'false');
+        });
+        this.classList.add('active');
+        this.setAttribute('aria-selected', 'true');
+
+        const group = searchTypeToGroup[this.getAttribute('data-search-type')];
+        document.querySelectorAll('.search-fields-group').forEach(function(el) {
+          el.hidden = el.getAttribute('data-search-group') !== group;
+        });
+        document.querySelectorAll('.results-group').forEach(function(el) {
+          el.hidden = el.getAttribute('data-results-group') !== group;
+        });
       });
     });
   </script>

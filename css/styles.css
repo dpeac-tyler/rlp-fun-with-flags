@@ -489,6 +489,28 @@ fieldset.margin-bottom-4  {
   }
 }
 
+.grid-col-8 {
+  flex: 0 0 auto;
+  width: 100%;
+}
+
+@media (min-width: 640px) {
+  .grid-col-8 {
+    width: 80%;
+  }
+}
+
+.grid-col-4 {
+  flex: 0 0 auto;
+  width: 100%;
+}
+
+@media (min-width: 640px) {
+  .grid-col-4 {
+    width: 33.3333%;
+  }
+}
+
 /* USWDS Component Overrides
    ========================================================================== */
 
@@ -1416,17 +1438,18 @@ select:focus {
 }
 
 .category-tab:hover {
-  color: #1a4480;
-  background-color: #f0f0f0;
+  color: #4c4c4c;
+  text-decoration: underline;
 }
 
 .category-tab.active {
-  color: #1a4480;
+  color: #4c4c4c;
+  background-color: #f0f0f0;
   border-bottom-color: #1a4480;
 }
 
 .category-tab.active:hover {
-  background-color: transparent;
+  background-color: #e6e6e6;
 }
 
 .tab-content {
