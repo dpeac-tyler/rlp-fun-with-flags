@@ -851,6 +851,17 @@ select:focus {
   margin-top: 0.4rem;
 }
 
+/* Flag Definitions
+   ========================================================================== */
+
+/* Secondary settings line under a flag description. #565c65 (not #71767a) so it
+   still clears 4.5:1 on the striped #f0f0f0 table rows. */
+.flag-settings {
+  font-size: 1.4rem;
+  color: #565c65;
+  margin-top: 0.3rem;
+}
+
 /* Status Text
    ========================================================================== */
 
