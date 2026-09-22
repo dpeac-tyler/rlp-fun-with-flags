@@ -103,73 +103,70 @@
         </ol>
       </nav>
 
-      <div class="profile-header">
-        <h1 class="profile-header__title">Edit Denial Code</h1>
+      <h1 class="page-title page-title--underlined">Edit Denial Code</h1>
+
+      <div class="margin-top-2">
+        <p>Update the denial code below. All fields marked with <span class="field-required">Required</span> indicate a required field.</p>
       </div>
 
       <!-- Error Alert -->
-      <div id="error-alert" class="usa-alert usa-alert--error" hidden>
+      <div id="error-alert" class="usa-alert usa-alert--error margin-top-2" hidden>
         <div class="usa-alert__body">
           <h3 class="usa-alert__heading">Error status</h3>
           <p class="usa-alert__text">Please correct the following errors before submitting.</p>
         </div>
       </div>
 
-      <div class="profile-content">
-        <div class="inspection-content">
-
-          <!-- Code Value -->
-          <div class="margin-bottom-4" id="code-value-group">
-            <label class="usa-label" for="code-value">Code Value <span class="field-required">Required</span></label>
-            <span class="usa-error-message" id="code-value-error" hidden>Enter a code value</span>
-            <input class="usa-input" id="code-value" name="code-value" type="text" value="DEN-001" required>
-          </div>
-
-          <!-- Display Label -->
-          <div class="margin-bottom-4" id="display-label-group">
-            <label class="usa-label" for="display-label">Display Label <span class="field-required">Required</span></label>
-            <span class="usa-error-message" id="display-label-error" hidden>Enter a display label</span>
-            <input class="usa-input" id="display-label" name="display-label" type="text" value="Application Incomplete" required>
-          </div>
-
-          <!-- Internal Description -->
-          <div class="margin-bottom-4">
-            <label class="usa-label" for="internal-description">Internal Description</label>
-            <input class="usa-input" id="internal-description" name="internal-description" type="text" value="Required documentation was not submitted">
-          </div>
-
-          <!-- Appeal Configuration -->
-          <div class="margin-bottom-4">
-            <label class="usa-label" for="appeal-configuration">Appeal Configuration</label>
-            <select class="usa-select" id="appeal-configuration" name="appeal-configuration">
-              <option value="">Please Select</option>
-              <option value="standard-administrative-review" selected>Standard Administrative Review</option>
-              <option value="formal-hearing-process">Formal Hearing Process</option>
-              <option value="informal-review">Informal Review</option>
-              <option value="expedited-review">Expedited Review</option>
-              <option value="late-appeal-process">Late Appeal Process</option>
-            </select>
-          </div>
-
-          <!-- Status -->
-          <div class="margin-bottom-4">
-            <fieldset class="usa-fieldset">
-              <legend class="usa-legend">Status <span class="field-required">Required</span></legend>
-              <div class="usa-radio">
-                <input class="usa-radio__input" id="status-active" type="radio" name="status" value="active" checked>
-                <label class="usa-radio__label" for="status-active">Active</label>
-              </div>
-              <div class="usa-radio">
-                <input class="usa-radio__input" id="status-inactive" type="radio" name="status" value="inactive">
-                <label class="usa-radio__label" for="status-inactive">Inactive</label>
-              </div>
-            </fieldset>
-          </div>
-
-        </div>
+      <!-- Code Value -->
+      <div style="margin-top: 2rem;" id="code-value-group">
+        <label class="usa-label" for="code-value">Code Value <span class="field-required">Required</span></label>
+        <span class="usa-error-message" id="code-value-error" hidden>Enter a code value</span>
+        <input class="usa-input" id="code-value" name="code-value" type="text" value="DEN-001" required style="max-width: 100%;">
       </div>
 
-      <div class="margin-top-2">
+      <!-- Display Label -->
+      <div style="margin-top: 2rem;" id="display-label-group">
+        <label class="usa-label" for="display-label">Display Label <span class="field-required">Required</span></label>
+        <span class="usa-error-message" id="display-label-error" hidden>Enter a display label</span>
+        <input class="usa-input" id="display-label" name="display-label" type="text" value="Application Incomplete" required style="max-width: 100%;">
+      </div>
+
+      <!-- Internal Description -->
+      <div style="margin-top: 2rem;">
+        <label class="usa-label" for="internal-description">Internal Description</label>
+        <input class="usa-input" id="internal-description" name="internal-description" type="text" value="Required documentation was not submitted" style="max-width: 100%;">
+      </div>
+
+      <!-- Appeal Configuration -->
+      <div style="margin-top: 2rem;">
+        <label class="usa-label" for="appeal-configuration">Appeal Configuration</label>
+        <select class="usa-select" id="appeal-configuration" name="appeal-configuration" style="max-width: 100%;">
+          <option value="">Please Select</option>
+          <option value="standard-administrative-review" selected>Standard Administrative Review</option>
+          <option value="formal-hearing-process">Formal Hearing Process</option>
+          <option value="informal-review">Informal Review</option>
+          <option value="expedited-review">Expedited Review</option>
+          <option value="late-appeal-process">Late Appeal Process</option>
+        </select>
+      </div>
+
+      <!-- Status -->
+      <div style="margin-top: 2rem;">
+        <fieldset class="usa-fieldset">
+          <legend class="usa-legend">Status <span class="field-required">Required</span></legend>
+          <div class="usa-radio">
+            <input class="usa-radio__input" id="status-active" type="radio" name="status" value="active" checked>
+            <label class="usa-radio__label" for="status-active">Active</label>
+          </div>
+          <div class="usa-radio">
+            <input class="usa-radio__input" id="status-inactive" type="radio" name="status" value="inactive">
+            <label class="usa-radio__label" for="status-inactive">Inactive</label>
+          </div>
+        </fieldset>
+      </div>
+
+      <hr style="margin-top: 4rem;">
+      <div style="margin-top: 2rem; margin-bottom: 3rem;">
         <button type="button" class="usa-button" id="submit-button">Save</button>
         <a href="denials.html" class="usa-button usa-button--secondary">Cancel</a>
       </div>

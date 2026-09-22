@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Add Letter - RLP</title>
+  <title>Create Letter - RLP</title>
   <!-- Custom RLP Styles -->
   <link rel="stylesheet" href="css/styles.css" />
   <style>
@@ -128,96 +128,93 @@
             <a href="individual-profile.html" class="usa-breadcrumb__link">Sarah Johnson</a>
           </li>
           <li class="usa-breadcrumb__list-item usa-current" aria-current="page">
-            <span>Add Letter</span>
+            <span>Create Letter</span>
           </li>
         </ol>
       </nav>
 
-      <div class="profile-header">
-        <h1 class="profile-header__title">Profile</h1>
+      <h1 class="page-title page-title--underlined">Create Letter</h1>
+
+      <div class="margin-top-2">
+        <p>Generate a letter for this profile using an existing letter template. All fields marked with <span class="field-required">Required</span> indicate a required field.</p>
       </div>
 
-      <div class="profile-content">
-        <div class="profile-content__header">
-          <h2 class="profile-content__heading">Add Letter</h2>
-        </div>
-
-        <form id="add-letter-form">
-          <div class="form-grid-3col">
-            <!-- Visibility (full width fieldset) -->
-            <fieldset class="usa-fieldset form-field-full">
-              <legend class="usa-legend">Visibility <span class="field-required">Required</span></legend>
-              <div class="usa-radio">
-                <input class="usa-radio__input" id="letter-visibility-agency-only" type="radio" name="letter-visibility" value="Agency Only" required>
-                <label class="usa-radio__label" for="letter-visibility-agency-only">Agency Only</label>
-              </div>
-              <div class="usa-radio">
-                <input class="usa-radio__input" id="letter-visibility-agency-constituent" type="radio" name="letter-visibility" value="Agency + Constituent" required checked>
-                <label class="usa-radio__label" for="letter-visibility-agency-constituent">Agency + Constituent</label>
-              </div>
-            </fieldset>
-
-            <!-- Record Type + Associated Record (2-col row) -->
-            <div class="form-field-full" style="display:grid; grid-template-columns:1fr 1fr; gap:2rem;">
-              <div class="usa-form-group" style="margin-bottom:0;">
-                <label class="usa-label" for="letter-record-type">Record Type</label>
-                <select class="usa-select" id="letter-record-type" name="letter-record-type">
-                  <option value="">Please Select</option>
-                  <option value="License">License</option>
-                  <option value="Application">Application</option>
-                  <option value="Case">Case</option>
-                </select>
-              </div>
-              <div class="usa-form-group" id="letter-associated-record-group" style="margin-bottom:0; visibility:hidden;">
-                <label class="usa-label" for="letter-associated-record">Associated Record <span class="field-required">Required</span></label>
-                <select class="usa-select" id="letter-associated-record" name="letter-associated-record">
-                  <option value="">Please Select</option>
-                </select>
-              </div>
+      <form id="add-letter-form">
+        <div class="form-grid-3col">
+          <!-- Visibility (full width fieldset) -->
+          <fieldset class="usa-fieldset form-field-full">
+            <legend class="usa-legend">Visibility <span class="field-required">Required</span></legend>
+            <div class="usa-radio">
+              <input class="usa-radio__input" id="letter-visibility-agency-only" type="radio" name="letter-visibility" value="Agency Only" required>
+              <label class="usa-radio__label" for="letter-visibility-agency-only">Agency Only</label>
             </div>
+            <div class="usa-radio">
+              <input class="usa-radio__input" id="letter-visibility-agency-constituent" type="radio" name="letter-visibility" value="Agency + Constituent" required checked>
+              <label class="usa-radio__label" for="letter-visibility-agency-constituent">Agency + Constituent</label>
+            </div>
+          </fieldset>
 
-            <!-- Letter Template (full width, own row) -->
-            <div class="usa-form-group form-field-full">
-              <label class="usa-label" for="letter-type">Letter Template <span class="field-required">Required</span></label>
-              <select class="usa-select" id="letter-type" name="letter-type" required>
+          <!-- Record Type + Associated Record (2-col row) -->
+          <div class="form-field-full" style="display:grid; grid-template-columns:1fr 1fr; gap:2rem;">
+            <div class="usa-form-group" style="margin-bottom:0;">
+              <label class="usa-label" for="letter-record-type">Record Type</label>
+              <select class="usa-select" id="letter-record-type" name="letter-record-type">
+                <option value="">Please Select</option>
+                <option value="License">License</option>
+                <option value="Application">Application</option>
+                <option value="Case">Case</option>
+              </select>
+            </div>
+            <div class="usa-form-group" id="letter-associated-record-group" style="margin-bottom:0; visibility:hidden;">
+              <label class="usa-label" for="letter-associated-record">Associated Record <span class="field-required">Required</span></label>
+              <select class="usa-select" id="letter-associated-record" name="letter-associated-record">
                 <option value="">Please Select</option>
               </select>
             </div>
-
-            <!-- Letter Template Fields (dynamic, shown when template is selected) -->
-            <div id="letter-template-fields" style="display: none; grid-column: 1 / -1;">
-              <div id="letter-dynamic-fields"></div>
-              <hr style="border: 0; border-top: 1px solid #dfe1e2; margin: 2rem 0;">
-            </div>
-
-            <!-- Delivery Method (full width fieldset) -->
-            <fieldset class="usa-fieldset form-field-full">
-              <legend class="usa-legend">Delivery Method <span class="field-required">Required</span></legend>
-              <div class="usa-radio">
-                <input class="usa-radio__input" id="letter-delivery-standard" type="radio" name="letter-delivery-method" value="Standard" required>
-                <label class="usa-radio__label" for="letter-delivery-standard">Standard</label>
-              </div>
-              <div class="usa-radio">
-                <input class="usa-radio__input" id="letter-delivery-certified" type="radio" name="letter-delivery-method" value="Certified" required>
-                <label class="usa-radio__label" for="letter-delivery-certified">Certified</label>
-              </div>
-            </fieldset>
-
-            <!-- Delivery Notes (full width) -->
-            <div class="usa-form-group form-field-full">
-              <label class="usa-label" for="letter-delivery-notes">Delivery Notes</label>
-              <textarea class="usa-textarea" id="letter-delivery-notes" name="letter-delivery-notes" maxlength="500" rows="4"></textarea>
-              <p style="font-size: 1.4rem; color: #71767a; margin-top: 0.5rem;">Maximum 500 characters</p>
-            </div>
           </div>
 
-          <!-- Form Buttons -->
-          <div style="display: flex; gap: 1rem; margin-top: 2rem;">
-            <button type="submit" class="usa-button">Save</button>
-            <button type="button" class="usa-button usa-button--secondary" id="cancel-add-letter">Cancel</button>
+          <!-- Letter Template (full width, own row) -->
+          <div class="usa-form-group form-field-full">
+            <label class="usa-label" for="letter-type">Letter Template <span class="field-required">Required</span></label>
+            <select class="usa-select" id="letter-type" name="letter-type" required>
+              <option value="">Please Select</option>
+            </select>
           </div>
-        </form>
-      </div>
+
+          <!-- Letter Template Fields (dynamic, shown when template is selected) -->
+          <div id="letter-template-fields" style="display: none; grid-column: 1 / -1;">
+            <div id="letter-dynamic-fields"></div>
+            <hr style="border: 0; border-top: 1px solid #dfe1e2; margin: 2rem 0;">
+          </div>
+
+          <!-- Delivery Method (full width fieldset) -->
+          <fieldset class="usa-fieldset form-field-full">
+            <legend class="usa-legend">Delivery Method <span class="field-required">Required</span></legend>
+            <div class="usa-radio">
+              <input class="usa-radio__input" id="letter-delivery-standard" type="radio" name="letter-delivery-method" value="Standard" required>
+              <label class="usa-radio__label" for="letter-delivery-standard">Standard</label>
+            </div>
+            <div class="usa-radio">
+              <input class="usa-radio__input" id="letter-delivery-certified" type="radio" name="letter-delivery-method" value="Certified" required>
+              <label class="usa-radio__label" for="letter-delivery-certified">Certified</label>
+            </div>
+          </fieldset>
+
+          <!-- Delivery Notes (full width) -->
+          <div class="usa-form-group form-field-full">
+            <label class="usa-label" for="letter-delivery-notes">Delivery Notes</label>
+            <textarea class="usa-textarea" id="letter-delivery-notes" name="letter-delivery-notes" maxlength="500" rows="4"></textarea>
+            <p style="font-size: 1.4rem; color: #71767a; margin-top: 0.5rem;">Maximum 500 characters</p>
+          </div>
+        </div>
+
+        <!-- Form Buttons -->
+        <hr style="margin-top: 4rem;">
+        <div style="margin-top: 2rem; margin-bottom: 3rem;">
+          <button type="submit" class="usa-button">Save</button>
+          <button type="button" class="usa-button usa-button--secondary" id="cancel-add-letter">Cancel</button>
+        </div>
+      </form>
     </main>
   </div>
 

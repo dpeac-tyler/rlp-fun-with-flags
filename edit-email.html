@@ -133,161 +133,158 @@
         </ol>
       </nav>
 
-      <div class="profile-header">
-        <h1 class="profile-header__title">Profile</h1>
+      <h1 class="page-title page-title--underlined">Edit Email</h1>
+
+      <div class="margin-top-2">
+        <p>Update the email below. All fields marked with <span class="field-required">Required</span> indicate a required field.</p>
       </div>
 
-      <div class="profile-content">
-        <div class="profile-content__header">
-          <h2 class="profile-content__heading">Edit Email</h2>
+      <form id="edit-email-form">
+        <div class="form-grid-3col">
+
+          <!-- Record Type -->
+          <div class="usa-form-group">
+            <label class="usa-label" for="email-record-type">Record Type</label>
+            <select class="usa-select" id="email-record-type" name="email-record-type" disabled>
+              <option value="">Please Select</option>
+              <option value="License">License</option>
+              <option value="Application">Application</option>
+              <option value="Case">Case</option>
+            </select>
+          </div>
+
+          <!-- Associated Record (shown when Record Type is selected) -->
+          <div class="usa-form-group" id="email-associated-record-group" style="visibility: hidden;">
+            <label class="usa-label" for="email-associated-record">Associated Record <span class="field-required">Required</span></label>
+            <select class="usa-select" id="email-associated-record" name="email-associated-record" disabled>
+              <option value="">Please Select</option>
+            </select>
+          </div>
+
+          <!-- Email Template -->
+          <div class="usa-form-group">
+            <label class="usa-label" for="email-template">Email Template <span class="field-required">Required</span></label>
+            <select class="usa-select" id="email-template" name="email-template" disabled>
+              <option value="">Please Select</option>
+            </select>
+          </div>
+
+          <!-- To / CC / Subject (shown when any template is selected) -->
+          <div id="email-recipient-fields" style="display: none; grid-column: 1 / -1;">
+            <p style="font-size: 1.4rem; color: #71767a; margin-bottom: 1.5rem;">Review and confirm the recipients and subject line before sending.</p>
+            <div class="form-grid-3col" style="margin-bottom: 0;">
+              <div class="usa-form-group">
+                <label class="usa-label" for="email-to">To: <span class="field-required">Required</span></label>
+                <input class="usa-input" id="email-to" name="email-to" type="text" value="Sarah Johnson" disabled>
+              </div>
+              <div class="usa-form-group">
+                <label class="usa-label" for="email-cc">CC:</label>
+                <input class="usa-input" id="email-cc" name="email-cc" type="text" disabled>
+              </div>
+              <div class="usa-form-group">
+                <label class="usa-label" for="email-subject">Subject:</label>
+                <input class="usa-input" id="email-subject" name="email-subject" type="text" disabled>
+              </div>
+            </div>
+          </div>
+
+          <!-- Email Template Fields (dynamic, shown when template is selected) -->
+          <div id="email-template-fields" style="display: none; grid-column: 1 / -1;">
+            <!-- Application Voided Fields -->
+            <div id="email-application-voided-fields" style="display: none;">
+
+              <div class="usa-form-group" style="margin-bottom: 1.5rem;">
+                <label class="usa-label" for="email-template-date">Date Spelled</label>
+                <input class="usa-input" id="email-template-date" name="email-template-date" type="text" readonly aria-readonly="true" style="background-color: #f0f0f0; color: #71767a;">
+              </div>
+
+              <div style="margin-bottom: 1.5rem;">
+                <h3 style="font-size: 1.8rem; font-weight: bold; margin-bottom: 1rem;">Mailing Address</h3>
+
+                <div class="usa-form-group" style="margin-bottom: 1rem;">
+                  <label class="usa-label" for="email-address-line1">Address Line 1</label>
+                  <input class="usa-input" id="email-address-line1" name="email-address-line1" type="text" value="4521 Maple Street" readonly aria-readonly="true" style="background-color: #f0f0f0; color: #71767a;">
+                </div>
+
+                <div class="usa-form-group" style="margin-bottom: 1rem;">
+                  <label class="usa-label" for="email-city">City</label>
+                  <input class="usa-input" id="email-city" name="email-city" type="text" value="Chicago" readonly aria-readonly="true" style="background-color: #f0f0f0; color: #71767a;">
+                </div>
+
+                <div class="usa-form-group" style="margin-bottom: 1rem;">
+                  <label class="usa-label" for="email-state">State</label>
+                  <input class="usa-input" id="email-state" name="email-state" type="text" value="IL" readonly aria-readonly="true" style="background-color: #f0f0f0; color: #71767a;">
+                </div>
+
+                <div class="usa-form-group" style="margin-bottom: 1rem;">
+                  <label class="usa-label" for="email-zip">Zip Code</label>
+                  <input class="usa-input" id="email-zip" name="email-zip" type="text" value="60601" readonly aria-readonly="true" style="background-color: #f0f0f0; color: #71767a;">
+                </div>
+              </div>
+
+              <div class="usa-form-group" style="margin-bottom: 1.5rem;">
+                <label class="usa-label" for="email-contact-name">Contact Name</label>
+                <input class="usa-input" id="email-contact-name" name="email-contact-name" type="text" value="Sarah Johnson" readonly aria-readonly="true" style="background-color: #f0f0f0; color: #71767a;">
+              </div>
+
+              <div class="usa-form-group" style="margin-bottom: 1.5rem;">
+                <label class="usa-label" for="email-credential-name">Full Credential Name</label>
+                <input class="usa-input" id="email-credential-name" name="email-credential-name" type="text" value="Private Security License" readonly aria-readonly="true" style="background-color: #f0f0f0; color: #71767a;">
+              </div>
+
+              <div class="usa-form-group" style="margin-bottom: 1.5rem;">
+                <label class="usa-label" for="email-supervised-by">Supervised By Name</label>
+                <input class="usa-input" id="email-supervised-by" name="email-supervised-by" type="text" value="James Patterson" readonly aria-readonly="true" style="background-color: #f0f0f0; color: #71767a;">
+              </div>
+
+              <div class="usa-form-group" style="margin-bottom: 1.5rem;">
+                <label class="usa-label">User Signature</label>
+                <div style="background-color: #f0f0f0; border: 1px solid #dfe1e2; padding: 1rem; border-radius: 4px;">
+                  <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='60'%3E%3Ctext x='10' y='40' font-family='Brush Script MT, cursive' font-size='24' fill='%23333'>Michael Rodriguez%3C/text%3E%3C/svg%3E" alt="User Signature" style="display: block; max-width: 200px;">
+                </div>
+                <input type="hidden" id="email-user-signature" name="email-user-signature" value="Michael Rodriguez">
+              </div>
+
+              <div class="usa-form-group" style="margin-bottom: 1.5rem;">
+                <label class="usa-label" for="email-user-name">User Name</label>
+                <input class="usa-input" id="email-user-name" name="email-user-name" type="text" value="Michael Rodriguez" readonly aria-readonly="true" style="background-color: #f0f0f0; color: #71767a;">
+              </div>
+
+              <div class="usa-form-group" style="margin-bottom: 1.5rem;">
+                <label class="usa-label" for="email-user-email">User Email</label>
+                <input class="usa-input" id="email-user-email" name="email-user-email" type="email" value="michael.rodriguez@dnr.illinois.gov" readonly aria-readonly="true" style="background-color: #f0f0f0; color: #71767a;">
+              </div>
+
+              <div class="usa-form-group" style="margin-bottom: 1.5rem;">
+                <label class="usa-label" for="email-rejection-dates">Rejection Date(s)</label>
+                <input class="usa-input" id="email-rejection-dates" name="email-rejection-dates" type="date" disabled>
+              </div>
+
+              <div style="margin-top: 1.5rem;">
+                <button type="button" id="preview-email-btn" class="usa-button">Preview Email</button>
+              </div>
+
+            </div>
+
+            <hr style="border: 0; border-top: 1px solid #dfe1e2; margin: 2rem 0;">
+          </div>
+
+          <!-- Notes (full width) -->
+          <div class="usa-form-group form-field-full">
+            <label class="usa-label" for="email-notes">Notes</label>
+            <textarea class="usa-textarea" id="email-notes" name="email-notes" maxlength="500" rows="4"></textarea>
+            <p style="font-size: 1.4rem; color: #71767a; margin-top: 0.5rem;">Maximum 500 characters</p>
+          </div>
+
         </div>
 
-        <form id="edit-email-form">
-          <div class="form-grid-3col">
-
-            <!-- Record Type -->
-            <div class="usa-form-group">
-              <label class="usa-label" for="email-record-type">Record Type</label>
-              <select class="usa-select" id="email-record-type" name="email-record-type" disabled>
-                <option value="">Please Select</option>
-                <option value="License">License</option>
-                <option value="Application">Application</option>
-                <option value="Case">Case</option>
-              </select>
-            </div>
-
-            <!-- Associated Record (shown when Record Type is selected) -->
-            <div class="usa-form-group" id="email-associated-record-group" style="visibility: hidden;">
-              <label class="usa-label" for="email-associated-record">Associated Record <span class="field-required">Required</span></label>
-              <select class="usa-select" id="email-associated-record" name="email-associated-record" disabled>
-                <option value="">Please Select</option>
-              </select>
-            </div>
-
-            <!-- Email Template -->
-            <div class="usa-form-group">
-              <label class="usa-label" for="email-template">Email Template <span class="field-required">Required</span></label>
-              <select class="usa-select" id="email-template" name="email-template" disabled>
-                <option value="">Please Select</option>
-              </select>
-            </div>
-
-            <!-- To / CC / Subject (shown when any template is selected) -->
-            <div id="email-recipient-fields" style="display: none; grid-column: 1 / -1;">
-              <p style="font-size: 1.4rem; color: #71767a; margin-bottom: 1.5rem;">Review and confirm the recipients and subject line before sending.</p>
-              <div class="form-grid-3col" style="margin-bottom: 0;">
-                <div class="usa-form-group">
-                  <label class="usa-label" for="email-to">To: <span class="field-required">Required</span></label>
-                  <input class="usa-input" id="email-to" name="email-to" type="text" value="Sarah Johnson" disabled>
-                </div>
-                <div class="usa-form-group">
-                  <label class="usa-label" for="email-cc">CC:</label>
-                  <input class="usa-input" id="email-cc" name="email-cc" type="text" disabled>
-                </div>
-                <div class="usa-form-group">
-                  <label class="usa-label" for="email-subject">Subject:</label>
-                  <input class="usa-input" id="email-subject" name="email-subject" type="text" disabled>
-                </div>
-              </div>
-            </div>
-
-            <!-- Email Template Fields (dynamic, shown when template is selected) -->
-            <div id="email-template-fields" style="display: none; grid-column: 1 / -1;">
-              <!-- Application Voided Fields -->
-              <div id="email-application-voided-fields" style="display: none;">
-
-                <div class="usa-form-group" style="margin-bottom: 1.5rem;">
-                  <label class="usa-label" for="email-template-date">Date Spelled</label>
-                  <input class="usa-input" id="email-template-date" name="email-template-date" type="text" readonly aria-readonly="true" style="background-color: #f0f0f0; color: #71767a;">
-                </div>
-
-                <div style="margin-bottom: 1.5rem;">
-                  <h3 style="font-size: 1.8rem; font-weight: bold; margin-bottom: 1rem;">Mailing Address</h3>
-
-                  <div class="usa-form-group" style="margin-bottom: 1rem;">
-                    <label class="usa-label" for="email-address-line1">Address Line 1</label>
-                    <input class="usa-input" id="email-address-line1" name="email-address-line1" type="text" value="4521 Maple Street" readonly aria-readonly="true" style="background-color: #f0f0f0; color: #71767a;">
-                  </div>
-
-                  <div class="usa-form-group" style="margin-bottom: 1rem;">
-                    <label class="usa-label" for="email-city">City</label>
-                    <input class="usa-input" id="email-city" name="email-city" type="text" value="Chicago" readonly aria-readonly="true" style="background-color: #f0f0f0; color: #71767a;">
-                  </div>
-
-                  <div class="usa-form-group" style="margin-bottom: 1rem;">
-                    <label class="usa-label" for="email-state">State</label>
-                    <input class="usa-input" id="email-state" name="email-state" type="text" value="IL" readonly aria-readonly="true" style="background-color: #f0f0f0; color: #71767a;">
-                  </div>
-
-                  <div class="usa-form-group" style="margin-bottom: 1rem;">
-                    <label class="usa-label" for="email-zip">Zip Code</label>
-                    <input class="usa-input" id="email-zip" name="email-zip" type="text" value="60601" readonly aria-readonly="true" style="background-color: #f0f0f0; color: #71767a;">
-                  </div>
-                </div>
-
-                <div class="usa-form-group" style="margin-bottom: 1.5rem;">
-                  <label class="usa-label" for="email-contact-name">Contact Name</label>
-                  <input class="usa-input" id="email-contact-name" name="email-contact-name" type="text" value="Sarah Johnson" readonly aria-readonly="true" style="background-color: #f0f0f0; color: #71767a;">
-                </div>
-
-                <div class="usa-form-group" style="margin-bottom: 1.5rem;">
-                  <label class="usa-label" for="email-credential-name">Full Credential Name</label>
-                  <input class="usa-input" id="email-credential-name" name="email-credential-name" type="text" value="Private Security License" readonly aria-readonly="true" style="background-color: #f0f0f0; color: #71767a;">
-                </div>
-
-                <div class="usa-form-group" style="margin-bottom: 1.5rem;">
-                  <label class="usa-label" for="email-supervised-by">Supervised By Name</label>
-                  <input class="usa-input" id="email-supervised-by" name="email-supervised-by" type="text" value="James Patterson" readonly aria-readonly="true" style="background-color: #f0f0f0; color: #71767a;">
-                </div>
-
-                <div class="usa-form-group" style="margin-bottom: 1.5rem;">
-                  <label class="usa-label">User Signature</label>
-                  <div style="background-color: #f0f0f0; border: 1px solid #dfe1e2; padding: 1rem; border-radius: 4px;">
-                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='60'%3E%3Ctext x='10' y='40' font-family='Brush Script MT, cursive' font-size='24' fill='%23333'>Michael Rodriguez%3C/text%3E%3C/svg%3E" alt="User Signature" style="display: block; max-width: 200px;">
-                  </div>
-                  <input type="hidden" id="email-user-signature" name="email-user-signature" value="Michael Rodriguez">
-                </div>
-
-                <div class="usa-form-group" style="margin-bottom: 1.5rem;">
-                  <label class="usa-label" for="email-user-name">User Name</label>
-                  <input class="usa-input" id="email-user-name" name="email-user-name" type="text" value="Michael Rodriguez" readonly aria-readonly="true" style="background-color: #f0f0f0; color: #71767a;">
-                </div>
-
-                <div class="usa-form-group" style="margin-bottom: 1.5rem;">
-                  <label class="usa-label" for="email-user-email">User Email</label>
-                  <input class="usa-input" id="email-user-email" name="email-user-email" type="email" value="michael.rodriguez@dnr.illinois.gov" readonly aria-readonly="true" style="background-color: #f0f0f0; color: #71767a;">
-                </div>
-
-                <div class="usa-form-group" style="margin-bottom: 1.5rem;">
-                  <label class="usa-label" for="email-rejection-dates">Rejection Date(s)</label>
-                  <input class="usa-input" id="email-rejection-dates" name="email-rejection-dates" type="date" disabled>
-                </div>
-
-                <div style="margin-top: 1.5rem;">
-                  <button type="button" id="preview-email-btn" class="usa-button">Preview Email</button>
-                </div>
-
-              </div>
-
-              <hr style="border: 0; border-top: 1px solid #dfe1e2; margin: 2rem 0;">
-            </div>
-
-            <!-- Notes (full width) -->
-            <div class="usa-form-group form-field-full">
-              <label class="usa-label" for="email-notes">Notes</label>
-              <textarea class="usa-textarea" id="email-notes" name="email-notes" maxlength="500" rows="4"></textarea>
-              <p style="font-size: 1.4rem; color: #71767a; margin-top: 0.5rem;">Maximum 500 characters</p>
-            </div>
-
-          </div>
-
-          <!-- Form Buttons -->
-          <div style="display: flex; gap: 1rem; margin-top: 2rem;">
-            <button type="submit" class="usa-button">Save Changes</button>
-            <button type="button" class="usa-button usa-button--secondary" id="cancel-edit-email">Cancel</button>
-          </div>
-        </form>
-      </div>
+        <!-- Form Buttons -->
+        <hr style="margin-top: 4rem;">
+        <div style="margin-top: 2rem; margin-bottom: 3rem;">
+          <button type="submit" class="usa-button">Save Changes</button>
+          <button type="button" class="usa-button usa-button--secondary" id="cancel-edit-email">Cancel</button>
+        </div>
+      </form>
     </main>
   </div>
 

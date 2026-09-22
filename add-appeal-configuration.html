@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Add Appeal Configuration - RLP</title>
+  <title>Create Appeal Configuration - RLP</title>
   <!-- Custom RLP Styles -->
   <link rel="stylesheet" href="css/styles.css" />
 </head>
@@ -98,141 +98,138 @@
             <a href="appeals.html" class="usa-breadcrumb__link">Appeal Configurations</a>
           </li>
           <li class="usa-breadcrumb__list-item usa-current" aria-current="page">
-            <span>Add Appeal Configuration</span>
+            <span>Create Appeal Configuration</span>
           </li>
         </ol>
       </nav>
 
-      <div class="profile-header">
-        <h1 class="profile-header__title">Add Appeal Configuration</h1>
+      <h1 class="page-title page-title--underlined">Create Appeal Configuration</h1>
+
+      <div class="margin-top-2">
+        <p>Enter appeal configuration information to create a new appeal configuration. All fields marked with <span class="field-required">Required</span> indicate a required field.</p>
       </div>
 
       <!-- Error Alert -->
-      <div id="error-alert" class="usa-alert usa-alert--error" hidden>
+      <div id="error-alert" class="usa-alert usa-alert--error margin-top-2" hidden>
         <div class="usa-alert__body">
           <h3 class="usa-alert__heading">Error status</h3>
           <p class="usa-alert__text">Please correct the following errors before submitting.</p>
         </div>
       </div>
 
-      <div class="profile-content">
-        <div class="inspection-content">
+      <!-- Appeal Configuration Name -->
+      <div style="margin-top: 2rem;" id="config-name-group">
+        <label class="usa-label" for="config-name">Appeal Configuration Name <span class="field-required">Required</span></label>
+        <span class="usa-error-message" id="config-name-error" hidden>Enter an appeal configuration name</span>
+        <input class="usa-input" id="config-name" name="config-name" type="text" required style="max-width: 100%;">
+      </div>
 
-          <!-- Appeal Configuration Name -->
-          <div class="margin-bottom-4" id="config-name-group">
-            <label class="usa-label" for="config-name">Appeal Configuration Name <span class="field-required">Required</span></label>
-            <span class="usa-error-message" id="config-name-error" hidden>Enter an appeal configuration name</span>
-            <input class="usa-input" id="config-name" name="config-name" type="text" required>
+      <!-- Status -->
+      <div style="margin-top: 2rem;">
+        <fieldset class="usa-fieldset">
+          <legend class="usa-legend">Status <span class="field-required">Required</span></legend>
+          <div class="usa-radio">
+            <input class="usa-radio__input" id="status-active" type="radio" name="status" value="active" checked>
+            <label class="usa-radio__label" for="status-active">Active</label>
           </div>
-
-          <!-- Status -->
-          <div class="margin-bottom-4">
-            <fieldset class="usa-fieldset">
-              <legend class="usa-legend">Status <span class="field-required">Required</span></legend>
-              <div class="usa-radio">
-                <input class="usa-radio__input" id="status-active" type="radio" name="status" value="active" checked>
-                <label class="usa-radio__label" for="status-active">Active</label>
-              </div>
-              <div class="usa-radio">
-                <input class="usa-radio__input" id="status-inactive" type="radio" name="status" value="inactive">
-                <label class="usa-radio__label" for="status-inactive">Inactive</label>
-              </div>
-            </fieldset>
+          <div class="usa-radio">
+            <input class="usa-radio__input" id="status-inactive" type="radio" name="status" value="inactive">
+            <label class="usa-radio__label" for="status-inactive">Inactive</label>
           </div>
+        </fieldset>
+      </div>
 
-          <!-- Appeal Window Length + Window Day Type -->
-          <div class="margin-bottom-4" id="window-group">
-            <label class="usa-label">Appeal Window Length <span class="field-required">Required</span></label>
-            <span class="usa-error-message" id="window-error" hidden>Enter a window length and day type</span>
-            <div class="grid-row" style="align-items: flex-end; gap: 1.6rem;">
-              <div class="grid-col-auto">
-                <label class="usa-label" for="window-length">Length <span class="field-required">Required</span></label>
-                <input class="usa-input" id="window-length" name="window-length" type="number" min="1" style="width: 10rem;">
-              </div>
-              <div class="grid-col-auto">
-                <label class="usa-label" for="window-day-type">Day Type <span class="field-required">Required</span></label>
-                <select class="usa-select" id="window-day-type" name="window-day-type">
-                  <option value="">Please Select</option>
-                  <option value="calendar">Calendar Days</option>
-                  <option value="business">Business Days</option>
-                </select>
-              </div>
-            </div>
+      <!-- Appeal Window Length + Window Day Type -->
+      <div style="margin-top: 2rem;" id="window-group">
+        <label class="usa-label">Appeal Window Length <span class="field-required">Required</span></label>
+        <span class="usa-error-message" id="window-error" hidden>Enter a window length and day type</span>
+        <div class="grid-row" style="align-items: flex-end; gap: 1.6rem;">
+          <div class="grid-col-auto">
+            <label class="usa-label" for="window-length">Length <span class="field-required">Required</span></label>
+            <input class="usa-input" id="window-length" name="window-length" type="number" min="1" style="width: 10rem;">
           </div>
-
-          <!-- Window Start Trigger -->
-          <div class="margin-bottom-4" id="window-trigger-group">
-            <label class="usa-label" for="window-start-trigger">Window Start Trigger <span class="field-required">Required</span></label>
-            <span class="usa-error-message" id="window-trigger-error" hidden>Select a window start trigger</span>
-            <select class="usa-select" id="window-start-trigger" name="window-start-trigger">
+          <div class="grid-col-auto">
+            <label class="usa-label" for="window-day-type">Day Type <span class="field-required">Required</span></label>
+            <select class="usa-select" id="window-day-type" name="window-day-type">
               <option value="">Please Select</option>
-              <option value="denial-date">Denial Date</option>
-              <option value="notification-sent">Notification Sent Date</option>
-              <option value="denial-letter-mailed">Denial Letter Mailed Date</option>
+              <option value="calendar">Calendar Days</option>
+              <option value="business">Business Days</option>
             </select>
           </div>
-
-          <!-- Late Appeals Allowed -->
-          <div class="margin-bottom-4">
-            <fieldset class="usa-fieldset">
-              <legend class="usa-legend">Late Appeals Allowed <span class="field-required">Required</span></legend>
-              <div class="usa-radio">
-                <input class="usa-radio__input" id="late-appeals-yes" type="radio" name="late-appeals" value="yes">
-                <label class="usa-radio__label" for="late-appeals-yes">Yes</label>
-              </div>
-              <div class="usa-radio">
-                <input class="usa-radio__input" id="late-appeals-no" type="radio" name="late-appeals" value="no">
-                <label class="usa-radio__label" for="late-appeals-no">No</label>
-              </div>
-            </fieldset>
-          </div>
-
-          <!-- Maximum Late Appeal Days (shown when Late Appeals = Yes) -->
-          <div id="max-late-days-group" class="margin-bottom-4" hidden>
-            <label class="usa-label" for="max-late-days">Maximum Late Appeal Days <span class="field-required">Required</span></label>
-            <input class="usa-input" id="max-late-days" name="max-late-days" type="number" min="1" style="width: 15rem;">
-          </div>
-
-          <!-- Appeal Process Type -->
-          <div class="margin-bottom-4" id="process-type-group">
-            <label class="usa-label" for="appeal-process-type">Appeal Process Type <span class="field-required">Required</span></label>
-            <span class="usa-error-message" id="process-type-error" hidden>Select an appeal process type</span>
-            <select class="usa-select" id="appeal-process-type" name="appeal-process-type">
-              <option value="">Please Select</option>
-              <option value="administrative">Administrative Review</option>
-              <option value="formal-hearing">Formal Hearing</option>
-              <option value="informal">Informal Review</option>
-            </select>
-          </div>
-
-          <!-- Supported Outcomes -->
-          <div class="margin-bottom-4" id="outcomes-group">
-            <fieldset class="usa-fieldset">
-              <legend class="usa-legend">Supported Outcomes <span class="field-required">Required</span></legend>
-              <span class="usa-error-message" id="outcomes-error" hidden>Select at least one outcome</span>
-              <div class="usa-checkbox">
-                <input class="usa-checkbox__input" id="outcome-approved" type="checkbox" name="supported-outcomes" value="approved">
-                <label class="usa-checkbox__label" for="outcome-approved">Approved</label>
-              </div>
-              <div class="usa-checkbox">
-                <input class="usa-checkbox__input" id="outcome-denied" type="checkbox" name="supported-outcomes" value="denied">
-                <label class="usa-checkbox__label" for="outcome-denied">Denied</label>
-              </div>
-              <div class="usa-checkbox">
-                <input class="usa-checkbox__input" id="outcome-modified" type="checkbox" name="supported-outcomes" value="modified">
-                <label class="usa-checkbox__label" for="outcome-modified">Modified</label>
-              </div>
-              <div class="usa-checkbox">
-                <input class="usa-checkbox__input" id="outcome-remanded" type="checkbox" name="supported-outcomes" value="remanded">
-                <label class="usa-checkbox__label" for="outcome-remanded">Remanded</label>
-              </div>
-            </fieldset>
-          </div>
-
         </div>
       </div>
 
-      <div class="margin-top-2">
+      <!-- Window Start Trigger -->
+      <div style="margin-top: 2rem;" id="window-trigger-group">
+        <label class="usa-label" for="window-start-trigger">Window Start Trigger <span class="field-required">Required</span></label>
+        <span class="usa-error-message" id="window-trigger-error" hidden>Select a window start trigger</span>
+        <select class="usa-select" id="window-start-trigger" name="window-start-trigger" style="max-width: 100%;">
+          <option value="">Please Select</option>
+          <option value="denial-date">Denial Date</option>
+          <option value="notification-sent">Notification Sent Date</option>
+          <option value="denial-letter-mailed">Denial Letter Mailed Date</option>
+        </select>
+      </div>
+
+      <!-- Late Appeals Allowed -->
+      <div style="margin-top: 2rem;">
+        <fieldset class="usa-fieldset">
+          <legend class="usa-legend">Late Appeals Allowed <span class="field-required">Required</span></legend>
+          <div class="usa-radio">
+            <input class="usa-radio__input" id="late-appeals-yes" type="radio" name="late-appeals" value="yes">
+            <label class="usa-radio__label" for="late-appeals-yes">Yes</label>
+          </div>
+          <div class="usa-radio">
+            <input class="usa-radio__input" id="late-appeals-no" type="radio" name="late-appeals" value="no">
+            <label class="usa-radio__label" for="late-appeals-no">No</label>
+          </div>
+        </fieldset>
+      </div>
+
+      <!-- Maximum Late Appeal Days (shown when Late Appeals = Yes) -->
+      <div id="max-late-days-group" style="margin-top: 2rem;" hidden>
+        <label class="usa-label" for="max-late-days">Maximum Late Appeal Days <span class="field-required">Required</span></label>
+        <input class="usa-input" id="max-late-days" name="max-late-days" type="number" min="1" style="width: 15rem;">
+      </div>
+
+      <!-- Appeal Process Type -->
+      <div style="margin-top: 2rem;" id="process-type-group">
+        <label class="usa-label" for="appeal-process-type">Appeal Process Type <span class="field-required">Required</span></label>
+        <span class="usa-error-message" id="process-type-error" hidden>Select an appeal process type</span>
+        <select class="usa-select" id="appeal-process-type" name="appeal-process-type" style="max-width: 100%;">
+          <option value="">Please Select</option>
+          <option value="administrative">Administrative Review</option>
+          <option value="formal-hearing">Formal Hearing</option>
+          <option value="informal">Informal Review</option>
+        </select>
+      </div>
+
+      <!-- Supported Outcomes -->
+      <div style="margin-top: 2rem;" id="outcomes-group">
+        <fieldset class="usa-fieldset">
+          <legend class="usa-legend">Supported Outcomes <span class="field-required">Required</span></legend>
+          <span class="usa-error-message" id="outcomes-error" hidden>Select at least one outcome</span>
+          <div class="usa-checkbox">
+            <input class="usa-checkbox__input" id="outcome-approved" type="checkbox" name="supported-outcomes" value="approved">
+            <label class="usa-checkbox__label" for="outcome-approved">Approved</label>
+          </div>
+          <div class="usa-checkbox">
+            <input class="usa-checkbox__input" id="outcome-denied" type="checkbox" name="supported-outcomes" value="denied">
+            <label class="usa-checkbox__label" for="outcome-denied">Denied</label>
+          </div>
+          <div class="usa-checkbox">
+            <input class="usa-checkbox__input" id="outcome-modified" type="checkbox" name="supported-outcomes" value="modified">
+            <label class="usa-checkbox__label" for="outcome-modified">Modified</label>
+          </div>
+          <div class="usa-checkbox">
+            <input class="usa-checkbox__input" id="outcome-remanded" type="checkbox" name="supported-outcomes" value="remanded">
+            <label class="usa-checkbox__label" for="outcome-remanded">Remanded</label>
+          </div>
+        </fieldset>
+      </div>
+
+      <hr style="margin-top: 4rem;">
+      <div style="margin-top: 2rem; margin-bottom: 3rem;">
         <button type="button" class="usa-button" id="submit-button">Save</button>
         <a href="appeals.html" class="usa-button usa-button--secondary">Cancel</a>
       </div>

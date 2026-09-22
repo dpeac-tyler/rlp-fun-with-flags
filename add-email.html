@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Add Email - RLP</title>
+  <title>Create Email - RLP</title>
   <link rel="stylesheet" href="css/styles.css" />
   <style>
     .form-grid-3col {
@@ -121,91 +121,88 @@
             <a href="individual-profile.html" class="usa-breadcrumb__link">Sarah Johnson</a>
           </li>
           <li class="usa-breadcrumb__list-item usa-current" aria-current="page">
-            <span>Add Email</span>
+            <span>Create Email</span>
           </li>
         </ol>
       </nav>
 
-      <div class="profile-header">
-        <h1 class="profile-header__title">Profile</h1>
+      <h1 class="page-title page-title--underlined">Create Email</h1>
+
+      <div class="margin-top-2">
+        <p>Compose an email for this profile using an existing email template. All fields marked with <span class="field-required">Required</span> indicate a required field.</p>
       </div>
 
-      <div class="profile-content">
-        <div class="profile-content__header">
-          <h2 class="profile-content__heading">Add Email</h2>
-        </div>
+      <form id="add-email-form">
+        <div class="form-grid-3col">
 
-        <form id="add-email-form">
-          <div class="form-grid-3col">
-
-            <!-- Record Type + Associated Record (2-col row) -->
-            <div class="form-field-full" style="display:grid; grid-template-columns:1fr 1fr; gap:2rem;">
-              <div class="usa-form-group" style="margin-bottom:0;">
-                <label class="usa-label" for="email-record-type">Record Type</label>
-                <select class="usa-select" id="email-record-type" name="email-record-type">
-                  <option value="">Please Select</option>
-                  <option value="License">License</option>
-                  <option value="Application">Application</option>
-                  <option value="Case">Case</option>
-                </select>
-              </div>
-              <div class="usa-form-group" id="email-associated-record-group" style="margin-bottom:0; visibility:hidden;">
-                <label class="usa-label" for="email-associated-record">Associated Record <span class="field-required">Required</span></label>
-                <select class="usa-select" id="email-associated-record" name="email-associated-record">
-                  <option value="">Please Select</option>
-                </select>
-              </div>
+          <!-- Record Type + Associated Record (2-col row) -->
+          <div class="form-field-full" style="display:grid; grid-template-columns:1fr 1fr; gap:2rem;">
+            <div class="usa-form-group" style="margin-bottom:0;">
+              <label class="usa-label" for="email-record-type">Record Type</label>
+              <select class="usa-select" id="email-record-type" name="email-record-type">
+                <option value="">Please Select</option>
+                <option value="License">License</option>
+                <option value="Application">Application</option>
+                <option value="Case">Case</option>
+              </select>
             </div>
-
-            <!-- Email Template (full width, own row) -->
-            <div class="usa-form-group form-field-full">
-              <label class="usa-label" for="email-template">Email Template <span class="field-required">Required</span></label>
-              <select class="usa-select" id="email-template" name="email-template" required>
+            <div class="usa-form-group" id="email-associated-record-group" style="margin-bottom:0; visibility:hidden;">
+              <label class="usa-label" for="email-associated-record">Associated Record <span class="field-required">Required</span></label>
+              <select class="usa-select" id="email-associated-record" name="email-associated-record">
                 <option value="">Please Select</option>
               </select>
             </div>
+          </div>
 
-            <!-- To / CC / Subject (shown when any template is selected) -->
-            <div id="email-recipient-fields" style="display: none; grid-column: 1 / -1;">
-              <p style="font-size: 1.6rem; margin-bottom: 1.5rem;">Please review and confirm the recipients and subject line before sending.</p>
-              <div class="form-grid-3col" style="margin-bottom: 0;">
-                <div class="usa-form-group">
-                  <label class="usa-label" for="email-to">To: <span class="field-required">Required</span></label>
-                  <input class="usa-input" id="email-to" name="email-to" type="text" value="Sarah Johnson" required>
-                </div>
-                <div class="usa-form-group">
-                  <label class="usa-label" for="email-cc">CC:</label>
-                  <input class="usa-input" id="email-cc" name="email-cc" type="text">
-                </div>
-                <div class="usa-form-group">
-                  <label class="usa-label" for="email-subject">Subject:</label>
-                  <input class="usa-input" id="email-subject" name="email-subject" type="text">
-                </div>
+          <!-- Email Template (full width, own row) -->
+          <div class="usa-form-group form-field-full">
+            <label class="usa-label" for="email-template">Email Template <span class="field-required">Required</span></label>
+            <select class="usa-select" id="email-template" name="email-template" required>
+              <option value="">Please Select</option>
+            </select>
+          </div>
+
+          <!-- To / CC / Subject (shown when any template is selected) -->
+          <div id="email-recipient-fields" style="display: none; grid-column: 1 / -1;">
+            <p style="font-size: 1.6rem; margin-bottom: 1.5rem;">Please review and confirm the recipients and subject line before sending.</p>
+            <div class="form-grid-3col" style="margin-bottom: 0;">
+              <div class="usa-form-group">
+                <label class="usa-label" for="email-to">To: <span class="field-required">Required</span></label>
+                <input class="usa-input" id="email-to" name="email-to" type="text" value="Sarah Johnson" required>
+              </div>
+              <div class="usa-form-group">
+                <label class="usa-label" for="email-cc">CC:</label>
+                <input class="usa-input" id="email-cc" name="email-cc" type="text">
+              </div>
+              <div class="usa-form-group">
+                <label class="usa-label" for="email-subject">Subject:</label>
+                <input class="usa-input" id="email-subject" name="email-subject" type="text">
               </div>
             </div>
-
-            <!-- Email Template Fields (dynamic, shown when template is selected) -->
-            <div id="email-template-fields" style="display: none; grid-column: 1 / -1;">
-              <div id="email-dynamic-fields"></div>
-              <hr style="border: 0; border-top: 1px solid #dfe1e2; margin: 2rem 0;">
-            </div>
-
-            <!-- Notes (full width) -->
-            <div class="usa-form-group form-field-full">
-              <label class="usa-label" for="email-notes">Notes</label>
-              <textarea class="usa-textarea" id="email-notes" name="email-notes" maxlength="500" rows="4"></textarea>
-              <p style="font-size: 1.4rem; color: #71767a; margin-top: 0.5rem;">Maximum 500 characters</p>
-            </div>
-
           </div>
 
-          <!-- Form Buttons -->
-          <div style="display: flex; gap: 1rem; margin-top: 2rem;">
-            <button type="submit" class="usa-button">Send Email</button>
-            <button type="button" class="usa-button usa-button--secondary" id="cancel-add-email">Cancel</button>
+          <!-- Email Template Fields (dynamic, shown when template is selected) -->
+          <div id="email-template-fields" style="display: none; grid-column: 1 / -1;">
+            <div id="email-dynamic-fields"></div>
+            <hr style="border: 0; border-top: 1px solid #dfe1e2; margin: 2rem 0;">
           </div>
-        </form>
-      </div>
+
+          <!-- Notes (full width) -->
+          <div class="usa-form-group form-field-full">
+            <label class="usa-label" for="email-notes">Notes</label>
+            <textarea class="usa-textarea" id="email-notes" name="email-notes" maxlength="500" rows="4"></textarea>
+            <p style="font-size: 1.4rem; color: #71767a; margin-top: 0.5rem;">Maximum 500 characters</p>
+          </div>
+
+        </div>
+
+        <!-- Form Buttons -->
+        <hr style="margin-top: 4rem;">
+        <div style="margin-top: 2rem; margin-bottom: 3rem;">
+          <button type="submit" class="usa-button">Send Email</button>
+          <button type="button" class="usa-button usa-button--secondary" id="cancel-add-email">Cancel</button>
+        </div>
+      </form>
     </main>
   </div>
 

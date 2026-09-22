@@ -181,220 +181,217 @@
         </ol>
       </nav>
 
-      <div class="profile-header">
-        <h1 class="profile-header__title">Profile</h1>
+      <h1 class="page-title page-title--underlined">Edit Letter</h1>
+
+      <div class="margin-top-2">
+        <p>Update the letter below. All fields marked with <span class="field-required">Required</span> indicate a required field.</p>
       </div>
 
-      <div class="profile-content">
-        <div class="profile-content__header">
-          <h2 class="profile-content__heading">Edit Letter</h2>
+      <form id="edit-letter-form">
+        <div class="form-grid-3col">
+          <!-- Visibility (full width fieldset) -->
+          <fieldset class="usa-fieldset form-field-full">
+            <legend class="usa-legend">Visibility <span class="field-required">Required</span></legend>
+            <div class="usa-radio">
+              <input class="usa-radio__input" id="letter-visibility-agency-only" type="radio" name="letter-visibility" value="Agency Only" required>
+              <label class="usa-radio__label" for="letter-visibility-agency-only">Agency Only</label>
+            </div>
+            <div class="usa-radio">
+              <input class="usa-radio__input" id="letter-visibility-agency-constituent" type="radio" name="letter-visibility" value="Agency + Constituent" required>
+              <label class="usa-radio__label" for="letter-visibility-agency-constituent">Agency + Constituent</label>
+            </div>
+          </fieldset>
+
+          <!-- Letter Template (disabled) -->
+          <div class="usa-form-group">
+            <label class="usa-label" for="letter-type">Letter Template <span class="field-required">Required</span></label>
+            <select class="usa-select" id="letter-type" name="letter-type" required disabled aria-disabled="true">
+              <option value="">Please Select</option>
+              <option value="Application Held">Application Held</option>
+              <option value="Compliance Letter">Compliance Letter</option>
+              <option value="Deficiency Notice">Deficiency Notice</option>
+              <option value="Enforcement Communications">Enforcement Communications</option>
+              <option value="Notice of Violation">Notice of Violation</option>
+            </select>
+          </div>
+
+          <!-- Letter Template Fields (dynamic, shown when template is selected, all non-editable) -->
+          <div id="letter-template-fields" style="display: none; grid-column: 1 / -1;">
+            <!-- Application Held Template Fields -->
+            <div id="application-held-fields" style="display: none;">
+              <div class="usa-form-group" style="margin-bottom: 1.5rem;">
+                <label class="usa-label" for="template-date">Date Spelled</label>
+                <input class="usa-input" id="template-date" name="template-date" type="text" readonly aria-readonly="true" style="background-color: #f0f0f0; color: #71767a;">
+              </div>
+
+              <div class="usa-form-group" style="margin-bottom: 1.5rem;">
+                <label class="usa-label" for="template-contact-name">Contact Name</label>
+                <input class="usa-input" id="template-contact-name" name="template-contact-name" type="text" readonly aria-readonly="true" style="background-color: #f0f0f0; color: #71767a;">
+              </div>
+
+              <div class="usa-form-group" style="margin-bottom: 1.5rem;">
+                <label class="usa-label" for="template-credential-name">Full Credential Name</label>
+                <input class="usa-input" id="template-credential-name" name="template-credential-name" type="text" readonly aria-readonly="true" style="background-color: #f0f0f0; color: #71767a;">
+              </div>
+
+              <div class="usa-form-group" style="margin-bottom: 1.5rem;">
+                <label class="usa-label" for="template-application-type">Application Type</label>
+                <input class="usa-input" id="template-application-type" name="template-application-type" type="text" readonly aria-readonly="true" style="background-color: #f0f0f0; color: #71767a;">
+              </div>
+
+              <div class="usa-form-group" style="margin-bottom: 1.5rem;">
+                <label class="usa-label" for="template-manager-name">Current Manager Name</label>
+                <input class="usa-input" id="template-manager-name" name="template-manager-name" type="text" readonly aria-readonly="true" style="background-color: #f0f0f0; color: #71767a;">
+              </div>
+
+              <div style="margin-bottom: 1.5rem;">
+                <h3 style="font-size: 1.8rem; font-weight: bold; margin-bottom: 1rem;">Supervisor Mailing Address</h3>
+
+                <div class="usa-form-group" style="margin-bottom: 1rem;">
+                  <label class="usa-label" for="template-address-line1">Address Line 1</label>
+                  <input class="usa-input" id="template-address-line1" name="template-address-line1" type="text" readonly aria-readonly="true" style="background-color: #f0f0f0; color: #71767a;">
+                </div>
+
+                <div class="usa-form-group" style="margin-bottom: 1rem;">
+                  <label class="usa-label" for="template-address-line2">Address Line 2</label>
+                  <input class="usa-input" id="template-address-line2" name="template-address-line2" type="text" readonly aria-readonly="true" style="background-color: #f0f0f0; color: #71767a;">
+                </div>
+
+                <div class="usa-form-group" style="margin-bottom: 1rem;">
+                  <label class="usa-label" for="template-city">City</label>
+                  <input class="usa-input" id="template-city" name="template-city" type="text" readonly aria-readonly="true" style="background-color: #f0f0f0; color: #71767a;">
+                </div>
+
+                <div class="usa-form-group" style="margin-bottom: 1rem;">
+                  <label class="usa-label" for="template-state">State</label>
+                  <input class="usa-input" id="template-state" name="template-state" type="text" readonly aria-readonly="true" style="background-color: #f0f0f0; color: #71767a;">
+                </div>
+
+                <div class="usa-form-group" style="margin-bottom: 1rem;">
+                  <label class="usa-label" for="template-zip">Zip Code</label>
+                  <input class="usa-input" id="template-zip" name="template-zip" type="text" readonly aria-readonly="true" style="background-color: #f0f0f0; color: #71767a;">
+                </div>
+              </div>
+
+              <div class="usa-form-group" style="margin-bottom: 1.5rem;">
+                <label class="usa-label" for="template-user-signature">User Signature</label>
+                <div style="background-color: #f0f0f0; border: 1px solid #dfe1e2; padding: 1rem; border-radius: 4px;">
+                  <img id="template-user-signature-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='60'%3E%3Ctext x='10' y='40' font-family='Brush Script MT, cursive' font-size='24' fill='%23333'>Michael Rodriguez%3C/text%3E%3C/svg%3E" alt="User Signature" style="display: block; max-width: 200px;">
+                </div>
+                <input type="hidden" id="template-user-signature" name="template-user-signature">
+              </div>
+
+              <div class="usa-form-group" style="margin-bottom: 1.5rem;">
+                <label class="usa-label" for="template-user-name">User Name</label>
+                <input class="usa-input" id="template-user-name" name="template-user-name" type="text" readonly aria-readonly="true" style="background-color: #f0f0f0; color: #71767a;">
+              </div>
+
+              <div class="usa-form-group" style="margin-bottom: 1.5rem;">
+                <label class="usa-label" for="template-user-email">User Email</label>
+                <input class="usa-input" id="template-user-email" name="template-user-email" type="email" readonly aria-readonly="true" style="background-color: #f0f0f0; color: #71767a;">
+              </div>
+
+              <div class="usa-form-group" style="margin-bottom: 1.5rem;">
+                <label class="usa-label" for="template-bg-number">BG Number</label>
+                <input class="usa-input" id="template-bg-number" name="template-bg-number" type="text" readonly aria-readonly="true" style="background-color: #f0f0f0; color: #71767a;">
+              </div>
+            </div>
+
+            <hr style="border: 0; border-top: 1px solid #dfe1e2; margin: 2rem 0;">
+          </div>
+
+          <!-- Delivery Method (full width fieldset) -->
+          <fieldset class="usa-fieldset form-field-full">
+            <legend class="usa-legend">Delivery Method <span class="field-required">Required</span></legend>
+            <div class="usa-radio">
+              <input class="usa-radio__input" id="letter-delivery-standard" type="radio" name="letter-delivery-method" value="Standard" required disabled aria-disabled="true">
+              <label class="usa-radio__label" for="letter-delivery-standard">Standard</label>
+            </div>
+            <div class="usa-radio">
+              <input class="usa-radio__input" id="letter-delivery-certified" type="radio" name="letter-delivery-method" value="Certified" required disabled aria-disabled="true">
+              <label class="usa-radio__label" for="letter-delivery-certified">Certified</label>
+            </div>
+          </fieldset>
+
+          <!-- Mailed Date (full width for Standard, column 1 for Certified) -->
+          <div class="usa-form-group" id="mailed-date-field">
+            <label class="usa-label" for="letter-mailed-date">Mailed Date</label>
+            <div class="usa-hint">mm/dd/yyyy</div>
+            <input class="usa-input date-input-custom" id="letter-mailed-date" name="letter-mailed-date" type="date">
+          </div>
+
+          <!-- Received Date (column 2, Certified only) -->
+          <div class="usa-form-group" id="received-date-field" style="display: none;">
+            <label class="usa-label" for="letter-received-date">Received Date</label>
+            <div class="usa-hint">mm/dd/yyyy</div>
+            <input class="usa-input date-input-custom" id="letter-received-date" name="letter-received-date" type="date">
+          </div>
+
+          <!-- Empty space (column 3, Certified only) - maintains grid structure -->
+          <div class="usa-form-group" id="date-row-spacer" style="display: none;"></div>
+
+          <!-- Record Type -->
+          <div class="usa-form-group">
+            <label class="usa-label" for="letter-record-type">Record Type</label>
+            <select class="usa-select" id="letter-record-type" name="letter-record-type" disabled aria-disabled="true">
+              <option value="">Please Select</option>
+              <option value="License">License</option>
+              <option value="Application">Application</option>
+              <option value="Case">Case</option>
+            </select>
+          </div>
+
+          <!-- Associated Record (disabled, column 3) -->
+          <div class="usa-form-group" id="letter-associated-record-group" style="visibility: hidden;">
+            <label class="usa-label" for="letter-associated-record">Associated Record <span class="field-required">Required</span></label>
+            <select class="usa-select" id="letter-associated-record" name="letter-associated-record" disabled aria-disabled="true">
+              <option value="">Please Select</option>
+            </select>
+          </div>
+
+          <!-- Tracking Number (column 1, Certified only) -->
+          <div class="usa-form-group" id="tracking-number-field">
+            <label class="usa-label" for="letter-tracking-number">Tracking Number</label>
+            <input class="usa-input" id="letter-tracking-number" name="letter-tracking-number" type="text">
+          </div>
+
+          <!-- Delivery Attempts (column 2, Certified only) -->
+          <div class="usa-form-group" id="delivery-attempts-field">
+            <label class="usa-label" for="letter-delivery-attempts">Delivery Attempts</label>
+            <input class="usa-input" id="letter-delivery-attempts" name="letter-delivery-attempts" type="number" min="0" max="3" value="0">
+          </div>
+
+          <!-- Empty space (column 3) - maintains grid structure -->
+          <div class="usa-form-group" id="tracking-row-spacer"></div>
+
+          <!-- Status (full width) -->
+          <div class="usa-form-group form-field-full">
+            <label class="usa-label" for="letter-status">Status <span class="field-required">Required</span></label>
+            <select class="usa-select" id="letter-status" name="letter-status" required>
+              <option value="">Please Select</option>
+              <option value="Generated">Generated</option>
+              <option value="Mailed">Mailed</option>
+              <option value="Received">Received</option>
+              <option value="Returned">Returned</option>
+              <option value="Failed">Failed</option>
+            </select>
+          </div>
+
+          <!-- Delivery Notes (full width) -->
+          <div class="usa-form-group form-field-full">
+            <label class="usa-label" for="letter-delivery-notes">Delivery Notes</label>
+            <textarea class="usa-textarea" id="letter-delivery-notes" name="letter-delivery-notes" maxlength="500" rows="4"></textarea>
+            <p style="font-size: 1.4rem; color: #71767a; margin-top: 0.5rem;">Maximum 500 characters</p>
+          </div>
         </div>
 
-        <form id="edit-letter-form">
-          <div class="form-grid-3col">
-            <!-- Visibility (full width fieldset) -->
-            <fieldset class="usa-fieldset form-field-full">
-              <legend class="usa-legend">Visibility <span class="field-required">Required</span></legend>
-              <div class="usa-radio">
-                <input class="usa-radio__input" id="letter-visibility-agency-only" type="radio" name="letter-visibility" value="Agency Only" required>
-                <label class="usa-radio__label" for="letter-visibility-agency-only">Agency Only</label>
-              </div>
-              <div class="usa-radio">
-                <input class="usa-radio__input" id="letter-visibility-agency-constituent" type="radio" name="letter-visibility" value="Agency + Constituent" required>
-                <label class="usa-radio__label" for="letter-visibility-agency-constituent">Agency + Constituent</label>
-              </div>
-            </fieldset>
-
-            <!-- Letter Template (disabled) -->
-            <div class="usa-form-group">
-              <label class="usa-label" for="letter-type">Letter Template <span class="field-required">Required</span></label>
-              <select class="usa-select" id="letter-type" name="letter-type" required disabled aria-disabled="true">
-                <option value="">Please Select</option>
-                <option value="Application Held">Application Held</option>
-                <option value="Compliance Letter">Compliance Letter</option>
-                <option value="Deficiency Notice">Deficiency Notice</option>
-                <option value="Enforcement Communications">Enforcement Communications</option>
-                <option value="Notice of Violation">Notice of Violation</option>
-              </select>
-            </div>
-
-            <!-- Letter Template Fields (dynamic, shown when template is selected, all non-editable) -->
-            <div id="letter-template-fields" style="display: none; grid-column: 1 / -1;">
-              <!-- Application Held Template Fields -->
-              <div id="application-held-fields" style="display: none;">
-                <div class="usa-form-group" style="margin-bottom: 1.5rem;">
-                  <label class="usa-label" for="template-date">Date Spelled</label>
-                  <input class="usa-input" id="template-date" name="template-date" type="text" readonly aria-readonly="true" style="background-color: #f0f0f0; color: #71767a;">
-                </div>
-
-                <div class="usa-form-group" style="margin-bottom: 1.5rem;">
-                  <label class="usa-label" for="template-contact-name">Contact Name</label>
-                  <input class="usa-input" id="template-contact-name" name="template-contact-name" type="text" readonly aria-readonly="true" style="background-color: #f0f0f0; color: #71767a;">
-                </div>
-
-                <div class="usa-form-group" style="margin-bottom: 1.5rem;">
-                  <label class="usa-label" for="template-credential-name">Full Credential Name</label>
-                  <input class="usa-input" id="template-credential-name" name="template-credential-name" type="text" readonly aria-readonly="true" style="background-color: #f0f0f0; color: #71767a;">
-                </div>
-
-                <div class="usa-form-group" style="margin-bottom: 1.5rem;">
-                  <label class="usa-label" for="template-application-type">Application Type</label>
-                  <input class="usa-input" id="template-application-type" name="template-application-type" type="text" readonly aria-readonly="true" style="background-color: #f0f0f0; color: #71767a;">
-                </div>
-
-                <div class="usa-form-group" style="margin-bottom: 1.5rem;">
-                  <label class="usa-label" for="template-manager-name">Current Manager Name</label>
-                  <input class="usa-input" id="template-manager-name" name="template-manager-name" type="text" readonly aria-readonly="true" style="background-color: #f0f0f0; color: #71767a;">
-                </div>
-
-                <div style="margin-bottom: 1.5rem;">
-                  <h3 style="font-size: 1.8rem; font-weight: bold; margin-bottom: 1rem;">Supervisor Mailing Address</h3>
-
-                  <div class="usa-form-group" style="margin-bottom: 1rem;">
-                    <label class="usa-label" for="template-address-line1">Address Line 1</label>
-                    <input class="usa-input" id="template-address-line1" name="template-address-line1" type="text" readonly aria-readonly="true" style="background-color: #f0f0f0; color: #71767a;">
-                  </div>
-
-                  <div class="usa-form-group" style="margin-bottom: 1rem;">
-                    <label class="usa-label" for="template-address-line2">Address Line 2</label>
-                    <input class="usa-input" id="template-address-line2" name="template-address-line2" type="text" readonly aria-readonly="true" style="background-color: #f0f0f0; color: #71767a;">
-                  </div>
-
-                  <div class="usa-form-group" style="margin-bottom: 1rem;">
-                    <label class="usa-label" for="template-city">City</label>
-                    <input class="usa-input" id="template-city" name="template-city" type="text" readonly aria-readonly="true" style="background-color: #f0f0f0; color: #71767a;">
-                  </div>
-
-                  <div class="usa-form-group" style="margin-bottom: 1rem;">
-                    <label class="usa-label" for="template-state">State</label>
-                    <input class="usa-input" id="template-state" name="template-state" type="text" readonly aria-readonly="true" style="background-color: #f0f0f0; color: #71767a;">
-                  </div>
-
-                  <div class="usa-form-group" style="margin-bottom: 1rem;">
-                    <label class="usa-label" for="template-zip">Zip Code</label>
-                    <input class="usa-input" id="template-zip" name="template-zip" type="text" readonly aria-readonly="true" style="background-color: #f0f0f0; color: #71767a;">
-                  </div>
-                </div>
-
-                <div class="usa-form-group" style="margin-bottom: 1.5rem;">
-                  <label class="usa-label" for="template-user-signature">User Signature</label>
-                  <div style="background-color: #f0f0f0; border: 1px solid #dfe1e2; padding: 1rem; border-radius: 4px;">
-                    <img id="template-user-signature-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='60'%3E%3Ctext x='10' y='40' font-family='Brush Script MT, cursive' font-size='24' fill='%23333'>Michael Rodriguez%3C/text%3E%3C/svg%3E" alt="User Signature" style="display: block; max-width: 200px;">
-                  </div>
-                  <input type="hidden" id="template-user-signature" name="template-user-signature">
-                </div>
-
-                <div class="usa-form-group" style="margin-bottom: 1.5rem;">
-                  <label class="usa-label" for="template-user-name">User Name</label>
-                  <input class="usa-input" id="template-user-name" name="template-user-name" type="text" readonly aria-readonly="true" style="background-color: #f0f0f0; color: #71767a;">
-                </div>
-
-                <div class="usa-form-group" style="margin-bottom: 1.5rem;">
-                  <label class="usa-label" for="template-user-email">User Email</label>
-                  <input class="usa-input" id="template-user-email" name="template-user-email" type="email" readonly aria-readonly="true" style="background-color: #f0f0f0; color: #71767a;">
-                </div>
-
-                <div class="usa-form-group" style="margin-bottom: 1.5rem;">
-                  <label class="usa-label" for="template-bg-number">BG Number</label>
-                  <input class="usa-input" id="template-bg-number" name="template-bg-number" type="text" readonly aria-readonly="true" style="background-color: #f0f0f0; color: #71767a;">
-                </div>
-              </div>
-
-              <hr style="border: 0; border-top: 1px solid #dfe1e2; margin: 2rem 0;">
-            </div>
-
-            <!-- Delivery Method (full width fieldset) -->
-            <fieldset class="usa-fieldset form-field-full">
-              <legend class="usa-legend">Delivery Method <span class="field-required">Required</span></legend>
-              <div class="usa-radio">
-                <input class="usa-radio__input" id="letter-delivery-standard" type="radio" name="letter-delivery-method" value="Standard" required disabled aria-disabled="true">
-                <label class="usa-radio__label" for="letter-delivery-standard">Standard</label>
-              </div>
-              <div class="usa-radio">
-                <input class="usa-radio__input" id="letter-delivery-certified" type="radio" name="letter-delivery-method" value="Certified" required disabled aria-disabled="true">
-                <label class="usa-radio__label" for="letter-delivery-certified">Certified</label>
-              </div>
-            </fieldset>
-
-            <!-- Mailed Date (full width for Standard, column 1 for Certified) -->
-            <div class="usa-form-group" id="mailed-date-field">
-              <label class="usa-label" for="letter-mailed-date">Mailed Date</label>
-              <div class="usa-hint">mm/dd/yyyy</div>
-              <input class="usa-input date-input-custom" id="letter-mailed-date" name="letter-mailed-date" type="date">
-            </div>
-
-            <!-- Received Date (column 2, Certified only) -->
-            <div class="usa-form-group" id="received-date-field" style="display: none;">
-              <label class="usa-label" for="letter-received-date">Received Date</label>
-              <div class="usa-hint">mm/dd/yyyy</div>
-              <input class="usa-input date-input-custom" id="letter-received-date" name="letter-received-date" type="date">
-            </div>
-
-            <!-- Empty space (column 3, Certified only) - maintains grid structure -->
-            <div class="usa-form-group" id="date-row-spacer" style="display: none;"></div>
-
-            <!-- Record Type -->
-            <div class="usa-form-group">
-              <label class="usa-label" for="letter-record-type">Record Type</label>
-              <select class="usa-select" id="letter-record-type" name="letter-record-type" disabled aria-disabled="true">
-                <option value="">Please Select</option>
-                <option value="License">License</option>
-                <option value="Application">Application</option>
-                <option value="Case">Case</option>
-              </select>
-            </div>
-
-            <!-- Associated Record (disabled, column 3) -->
-            <div class="usa-form-group" id="letter-associated-record-group" style="visibility: hidden;">
-              <label class="usa-label" for="letter-associated-record">Associated Record <span class="field-required">Required</span></label>
-              <select class="usa-select" id="letter-associated-record" name="letter-associated-record" disabled aria-disabled="true">
-                <option value="">Please Select</option>
-              </select>
-            </div>
-
-            <!-- Tracking Number (column 1, Certified only) -->
-            <div class="usa-form-group" id="tracking-number-field">
-              <label class="usa-label" for="letter-tracking-number">Tracking Number</label>
-              <input class="usa-input" id="letter-tracking-number" name="letter-tracking-number" type="text">
-            </div>
-
-            <!-- Delivery Attempts (column 2, Certified only) -->
-            <div class="usa-form-group" id="delivery-attempts-field">
-              <label class="usa-label" for="letter-delivery-attempts">Delivery Attempts</label>
-              <input class="usa-input" id="letter-delivery-attempts" name="letter-delivery-attempts" type="number" min="0" max="3" value="0">
-            </div>
-
-            <!-- Empty space (column 3) - maintains grid structure -->
-            <div class="usa-form-group" id="tracking-row-spacer"></div>
-
-            <!-- Status (full width) -->
-            <div class="usa-form-group form-field-full">
-              <label class="usa-label" for="letter-status">Status <span class="field-required">Required</span></label>
-              <select class="usa-select" id="letter-status" name="letter-status" required>
-                <option value="">Please Select</option>
-                <option value="Generated">Generated</option>
-                <option value="Mailed">Mailed</option>
-                <option value="Received">Received</option>
-                <option value="Returned">Returned</option>
-                <option value="Failed">Failed</option>
-              </select>
-            </div>
-
-            <!-- Delivery Notes (full width) -->
-            <div class="usa-form-group form-field-full">
-              <label class="usa-label" for="letter-delivery-notes">Delivery Notes</label>
-              <textarea class="usa-textarea" id="letter-delivery-notes" name="letter-delivery-notes" maxlength="500" rows="4"></textarea>
-              <p style="font-size: 1.4rem; color: #71767a; margin-top: 0.5rem;">Maximum 500 characters</p>
-            </div>
-          </div>
-
-          <!-- Form Buttons -->
-          <div style="display: flex; gap: 1rem; margin-top: 2rem;">
-            <button type="submit" class="usa-button">Save</button>
-            <button type="button" class="usa-button usa-button--secondary" id="cancel-edit-letter">Cancel</button>
-          </div>
-        </form>
-      </div>
+        <!-- Form Buttons -->
+        <hr style="margin-top: 4rem;">
+        <div style="margin-top: 2rem; margin-bottom: 3rem;">
+          <button type="submit" class="usa-button">Save</button>
+          <button type="button" class="usa-button usa-button--secondary" id="cancel-edit-letter">Cancel</button>
+        </div>
+      </form>
     </main>
   </div>
 
