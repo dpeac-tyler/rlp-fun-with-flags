@@ -2596,17 +2596,84 @@ input[type="date"].usa-input {
 /* Tooltip Icon
    ========================================================================== */
 
+.tooltip-wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  vertical-align: middle;
+}
+
 .tooltip-icon {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   width: 20px;
   height: 20px;
-  border: 1px solid black;
-  border-radius: 50%;
-  text-align: center;
-  line-height: 20px;
-  font-size: 12px;
+  padding: 0;
   margin-left: 4px;
+  border: 0;
+  background: none;
+  color: #565c65;
   cursor: help;
+}
+
+.tooltip-icon:focus-visible {
+  outline: 2px solid #2491ff;
+  outline-offset: 2px;
+  border-radius: 50%;
+}
+
+/* Bubble - opens to the right of the icon */
+.tooltip-bubble {
+  position: absolute;
+  left: calc(100% + 10px);
+  top: 50%;
+  transform: translateY(-50%);
+  width: max-content;
+  max-width: 30rem;
+  padding: 1.6rem;
+  background-color: #1b1b1b;
+  color: #fff;
+  border-radius: 8px;
+  font-family: "Public Sans Web", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 1.4rem;
+  font-weight: 400;
+  line-height: 1.5;
+  text-align: left;
+  white-space: normal;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.15s ease-in-out;
+  pointer-events: none;
+  z-index: 100;
+}
+
+/* Caret pointing left at the icon */
+.tooltip-bubble::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 100%;
+  transform: translateY(-50%);
+  border: 8px solid transparent;
+  border-right-color: #1b1b1b;
+}
+
+.tooltip-bubble__title {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1.2rem;
+}
+
+.tooltip-bubble__body {
+  display: block;
+}
+
+.tooltip-wrapper:hover .tooltip-bubble,
+.tooltip-icon:focus-visible + .tooltip-bubble {
+  opacity: 1;
+  visibility: visible;
 }
 
 /* Question Row Styles - Review Questions Page
