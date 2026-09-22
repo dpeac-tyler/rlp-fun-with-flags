@@ -117,40 +117,31 @@
         </div>
       </div>
 
-      <h2 class="margin-top-4">Flag Definition</h2>
-      <hr>
+      <!-- Name -->
+      <div style="margin-top: 2rem;" id="flag-key-group">
+        <label class="usa-label" for="flag-key">Name <span class="field-required">Required</span></label>
+        <span class="usa-error-message" id="flag-key-error" hidden>Enter a name using only uppercase letters, numbers, and underscores.</span>
+        <input class="usa-input" id="flag-key" name="flag-key" type="text" style="max-width: 100%;" required>
+      </div>
 
-      <div class="grid-row grid-gap-4" style="margin-top: 2rem;">
-        <!-- Name -->
-        <div class="tablet:grid-col-6" id="flag-key-group">
-          <label class="usa-label" for="flag-key">Name <span class="field-required">Required</span></label>
-          <span class="usa-error-message" id="flag-key-error" hidden>Enter a name using only uppercase letters, numbers, and underscores.</span>
-          <input class="usa-input" id="flag-key" name="flag-key" type="text" style="max-width: 100%;" required>
-          <p style="font-size: 1.4rem; color: #71767a; margin-top: 0.5rem;">Uppercase letters and underscores, for example INSURANCE_EXPIRATION. Must be unique within your agency.</p>
-        </div>
-
-        <!-- Category -->
-        <div class="tablet:grid-col-6" id="flag-category-group">
-          <label class="usa-label" for="flag-category">Category <span class="field-required">Required</span></label>
-          <span class="usa-error-message" id="flag-category-error" hidden>Select a category.</span>
-          <select class="usa-select" id="flag-category" name="flag-category" style="max-width: 100%;" required>
-            <option value="">Please Select</option>
-            <option value="Timer">Timer</option>
-            <option value="Expiration">Expiration</option>
-            <option value="Event">Event</option>
-            <option value="Manual">Manual</option>
-          </select>
-          <p style="font-size: 1.4rem; color: #71767a; margin-top: 0.5rem;">The name and category cannot be changed after the flag is created.</p>
-        </div>
+      <!-- Category -->
+      <div style="margin-top: 2rem;" id="flag-category-group">
+        <label class="usa-label" for="flag-category">Category <span class="field-required">Required</span></label>
+        <span class="usa-error-message" id="flag-category-error" hidden>Select a category.</span>
+        <select class="usa-select" id="flag-category" name="flag-category" style="max-width: 100%;" required>
+          <option value="">Please Select</option>
+          <option value="Timer">Timer</option>
+          <option value="Expiration">Expiration</option>
+          <option value="Event">Event</option>
+          <option value="Manual">Manual</option>
+        </select>
       </div>
 
       <!-- Label -->
-      <div class="grid-row grid-gap-4" style="margin-top: 2rem;">
-        <div class="tablet:grid-col-6" id="flag-label-group">
-          <label class="usa-label" for="flag-label">Label <span class="field-required">Required</span></label>
-          <span class="usa-error-message" id="flag-label-error" hidden>Enter a label.</span>
-          <input class="usa-input" id="flag-label" name="flag-label" type="text" style="max-width: 100%;" required>
-        </div>
+      <div style="margin-top: 2rem;" id="flag-label-group">
+        <label class="usa-label" for="flag-label">Label <span class="field-required">Required</span></label>
+        <span class="usa-error-message" id="flag-label-error" hidden>Enter a label.</span>
+        <input class="usa-input" id="flag-label" name="flag-label" type="text" style="max-width: 100%;" required>
       </div>
 
       <!-- Description -->
